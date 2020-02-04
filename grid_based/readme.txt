@@ -1,0 +1,1 @@
+This folder contains some of the files necessary to process a sensitivity atlas. Please refer to  the MESA guidance document for details.
