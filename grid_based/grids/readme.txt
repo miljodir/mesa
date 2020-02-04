@@ -1,0 +1,1 @@
+Files in this folder can be shapefiles or geopackage files with QDGC grids.

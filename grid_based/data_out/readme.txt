@@ -1,0 +1,1 @@
+Destination folder for produced data. Geopackage file resulting from the MESA processing will be available here. Exported maps from the QGIS template file will also be available here.

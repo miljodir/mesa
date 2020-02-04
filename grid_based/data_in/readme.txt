@@ -1,0 +1,1 @@
+Input data for processing is put here. Shapefiles, zipped shapefiles or geopackage files are possible formats.

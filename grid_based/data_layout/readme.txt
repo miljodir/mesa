@@ -1,0 +1,1 @@
+Images used in the map templates in QGIS can be placed here.
