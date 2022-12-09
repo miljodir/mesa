@@ -1,0 +1,891 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <WORKSPACE
+#    Command line to run this workspace:
+#        "C:\Program Files\FME2022.0\fme.exe" "C:\Users\romslo\Norkart AS\MESA 3.0 - sensitivity atlas - General\Workspacer_gjeldende\sensitivity_generate_geocode_qdgc.fmw"
+#          --SourceDataset_GEOJSON "C:\Users\romslo\Norkart AS\MESA 3.0 - sensitivity atlas - General\Workspaces_romslo\polygon_rundt_vega.geojson"
+#          --FEATURE_TYPES ""
+#          --delete_previous_grid "1"
+#          --qdgc_levels "2"
+#          --Projectname "romans_test_prosjekt"
+#          --FME_LAUNCH_VIEWER_APP "YES"
+#    
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAABmCAIAAABqYVArAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAcKElEQVR4nO3dW1QbZ54g8H+VVCpJ6C5B6YoEsgDjYCSLtrECviXd7eDYnp3JTGd7ZzM9Z86eMztz4p1z+rlfZs/u7MzsvPQ+7NnLZHZ79iG9nZ1OuzvEPd22Y+xgJzEGYmNsZGwZSYgCJIGELiWpqvZBIEBgm4sEFPl+h5OjKlV99SGsf+q7/QtzOp2AIAgiBPhuVwBBEGSjUMBCEEQwUMBCEEQwUMBCEEQwUMBCEEQwUMBCEEQwUMBCEEQwUMBCEEQwUMBCEEQwUMBCEEQwUMBCEEQwUMBCEEQwUMBCEEQwUMBCEEQwUMBCEEQwUMBCEEQwUMBCEEQwUMBCEEQwxLtdAQTZJwiC2O0qbAiGYblcbrdrsUUoYCHIdolEmK2e4LGEWCSAJkuBhTyjngxndrsiW4ECFoJsl8Ui5eAp8JAv7HZVNkauSGp11nhMeDFLAP9DQJC9TCQS4WKBffPz+YJUxu52LbYCBSwE2Rae57H19lu8FyyvPNl8ocO85uClnQAA5kOvLmTtYStLWA+GrVtlAUBNQgSppA7vJSMVYGgHSQUY7wUT5SjQIIardwdGlg64AJRDC3YSbmSHHFITdJguGanA4FIJFnAYTdDhvmSEQAgcVhOYwAkUQO/lu8USei4BgIMOBCjQgGNu6McR9xseE4QHRoqFF4bAaAKL+5Jp6Md3J3fjU6gadIeFIJUVmALH4n+pk264KqYgElnxPnXSDVfj9I1f9V7+7WRgavmUReHiTjowSMMMHYBIMdItHwA0AB2YBwBwzA1dNbovQekw6qQbrg5NBqYAwkNXje5LG7pBEw4MPfkZQbYDx3G7g2P55Zhk8V6AgcthONThdQIFkd7L4eXD1925OR3eC3cHLq/3zkYLx3ERk7VGwsKb3IACFoJsy9qAtfcJN2ChJiGCIIKBAhaCVNQGx/VWW3dIcXnn6jI7vBe2VrV9QNijhHJxTiNjlTIcgE8zEE9jC3lytyuFfKNZ3G94Vo/rLQ0LAgmBwd7LJu8FoEBDO+bgKoATKHDQjiwVGATo6LlkhMBg7+Xw0mjjoPnC224ojhWGB0bAfOFtNzDg6Oi5BEMBoxtC4BAP/Rjcyyfub0INWBiAlkwdcSlMellpZzyZ+2J0nl4gWY6v6kwTni8vXyze1idZKKyaIr22/MoqKx8XiXDBTszZa8J0wBMZAZNzeVyPOumGD4bgDRgaXzrKoaFgdAhMJoDSkCIAAEwtHxOYAkerCQACM3TAGhkBgA6TAyAANAAEtCYHQGBm6KrHfYlZdeJ+JtROd6Uke6Zd2dRyeOVOESF59njw4bN5t0tb1asns5xSuqo1PRZMfPF0izErV9OgphpX7uHzGYyQvej4ahi//VMzZdjJK+4br+p0r8CwYMUJt9NdkHdYOAY2HaaSExJSmkrOlfZLpDUSMS6XiZLpvFK+cum8QwWBBHS3+vQAABANjd1MzG6vEhhGWZsUKn2OyczNhppx8S/vPKmrq9vw2ZhEImEYJhKJNL7+Rre3EwCO2uHL5zELRG+zDcdFCYDohwNRAOj2NgHoAGKWpT1lHGZ9YHLV/m5v082BsbLDuns6AWLB3rEAgKlOV2+uY3L5VCbrfxZ2Hv9eavwqjm6zKm+kNGUU2T6RTqfb7TpsGinKtzfKaqRiTa0NF4tVepNEKheJJQQhmYuGFVLxxHT6yLeOS0h5Ohm3+n6oynw6kwZVsw/kWgOkc5AJPcatb59VxR4k0lupQK7AyyRilY7KZVPJuWmZQiNV1Z/93p8Z9PrJcFgsFhMEQRAEx3E8z4Pz9Htu0XAgDgAkSZIkSRAEZTT+6fv/zma1jj58KKtrsnsOWxQyVbF5m4phPN07GFnwtLf5QxMAdrMeKItFIbM4VWKz3O6P2r1NuFn/u+bDdrMka9afUdYpPHa7S273g91rw836RlDUmpW4Wf+7Zlc8EioG9Ql/xu6SJ/zROYDGelN4alYkwjEMi88v8DyfnRkTiUSV+yt9U2AYplLzAAu7XZHN4Vh1Mim85YSCDFgExhxxKXEM0xisAEBIZMDzYgmpNdTbmzumgyMheqHBZswzGbXeFBn5Jci7STmukmOJEG91qdIZESOfYm7fmtlStAKAXIE/eNg3H40U8kyNUieTqzCJIi3Sa/SGk6dO5hnGaDS6XK66urpgMAhxka4BAoE4AHz/+9+XyWQmk8lqtakNtVJ5zdmzPY+fR+vIQm/fHbEI6+3LvObJjCRdh3FFqzHT64fuHpslBclUrLeP93Wxdx7lEpGo2uNSK2T6VDpE5RIpaABJTDEfpCERyag9cnUK5CDJLL6VuR5ZvPnq7jltof2hSEZi0GhUChzHmFx+IZVpa3aEIrNM9AkKWFvA87xEIpPJkxzH7XZdNqpGrpyfU2Uy+d2uyKYJsg+LFOVPHiIprbShtRPDxBKZgucKSnWtramDzTPXPv6vA8Mjb54+mU7GovTzalQgmeXUNRKT/WAum87nsqRMUcDlIsupe1/euXH9+pp/uM7Tp+H69VV9onq9/t/8+fsP7w//7w8+MHvfKSv/lX1Yq1t8+m4v3FyvqVh81+HV2wCCkbHAimVlBw/YUmmGJAlSQjz0T3Acl3h8RSgp6PYgnV5eo8jhWCXnCYmJPA8zOG/NFyoZCjkem4/ziYTwOrBAoAELw6CFYjqatQ0Hj+OEhCTlHMdm0wmeZ5Pxmdtf3bfUyhSyKnbPJbOcUiYyGBsUakMhzyTidCJO/+2H40ajceOF4DjOcVwkEml8/Q/L3tqBTnfKoKUMGpIk5hIp/7MwAKA+rL3GYCANVPz5U10mk93tuuwVgux053kIxfgDC7l8LiPGIIdhwLEYjvMsFwk9zebYqkarUiVmI09nI0+LW5/eDm8qWgFA8UbMZDIFH1y3vXa68jV8KXo2Ts/GlzdHf6siUbjaW3I5nOdlLCuYluYOEOQdFgBgABpput0ht1Hy0s6ZOebuWHImLeX56l597TwpHN9WW2BlKzKDKyxO93ZKW/8S+SxOSIuvWTY/cvPnVstiziQMw4SbIGkfI0nS0SjyP84KqHes2oQasIpk4rxaxtaQgAGkGEhm8YW8ZLcrtS0ZTGF2HanVa2eicQDweXwAMTPMfjRYPguj3mSYiCzv9Hla+gcfLW54WnyDj/pXH8/l0zixHNwPNdWPD1yLRPZXtqT9hSAIR4POP0bvdkX2EEE2CUsyBSKTJCC52/WoHPMBNwA4rEYzZbj/aBwovRkA6FnfWZ+zjozfj2hBd2NwzOoxaOsbTjLz45B30skbAFpQ+s76oLhJvXrk9zWX9Vuv/SCfzQ4P3C2GLYVCMTw8zFf77nRf4wHPshiPSYBnxTgnwVnYxufJsiw9lapg9fYBtPh5L0plsmKxSEpKgPZ/dCUGlAYgFgMFT+kAYhMAQBUPjIVoiFFghXU3X6FQYGVyuVav5ziO4ziCIC5evOh2u1HzcGuyLJGXWdSO4/oDPr2rW2psT/FKFrY+U4TjuERCYNO7qk3YTcL9R914HBcTBw84Ho0/L7vZWdXoA4PPA/1r2okvUdYkfL2jZdI/PHj3y7KrNDQ0tLe3j42NPXz4cMu/xTdQhpXUmNtMFludXiOTSuLzC5N0NJcvRCfuJyOjwBX21K3rZgeI9g4UsPYcbdOJahRbFrDufvoPL/nTNzU1tba2joyM+P3+alRmn+F4UaHGeqDVe+Hbx0o76dm5X139Eng+Fn6kNTow8Y4uDl1VvUIWF0sBwN3qHHq4OB8w8/TqbtVnO1DA2ovKkjdURNnI5kbSS7S1tTmdzsHBwefPqzL/dgump2cAlm9Vqp3WYq11l4tmWEJ7oIuq1dktdRKxiCQlC6kMy3ED958AwPzU+NlvvyOWkBC5EzR1dgIA+MOgL0797fZ2AsTKpvWWrL8m1NtpoWJ3escCG6szV8i2tTbzPMzG52t16rlEKjw1Sw/9XKVSbeI33xuE3em+X20zWU2l3L9//8GDBx6Px+PxfPHFF5HILmcBljW+YW9cvYtlQFTFDGil29KDB2yPx0Mcz8O69yYiEsPwGhl5uMXBsVw2l2dZLpNlGuuNgSBN1miuRwI/ONocjuht4P9wIOrwNi3PW6EAaDC1dHaaZsJULUDORS9cA8V3qIX/ToML4Cbou736IMAZ0F0buBMAuDngf7dHv6lfRFEjm43N6zWqLJNTKeR7J2/EZqFOd+RleJ6/d+/e5cuX7Xb7xYsXa2trd74OPefPNzc3p1LF8bKmd3uaAKDb29TtbQIAh3nxRUlp0+HtfNfb+a53ne922SkA+u6ezh/+cadjzZFmSn/4YONcItXstB1wmAEgGl2zCmpF/xQuwuUykue5d3q6/vRf9fzBuW6OzR82kWEaLKZoEFzd3s7foyBK6bq9+tLlDuoBKDVALEhDjAIbLEzTuu7SaO/SGEugWFWvPgw624s/sbVwDEumMhiGCX0aKmoSIhuF47jP59Nqtbdu3YrH468+YRsoivJ6veFwGADefOtcgeVx4G4OT6bU9TYKoPcOFCMOp9LjiSjogpD7PWrh72joHhgD7xGgJAC5o7Dwd73FZtdpPZWJQkxPQ5TSQe8d8B4BWFh52wLQ9K537MOBVdXg8unWluYCy0pJSSqd1aoV9x48CX31f/X6VUEwUxBrnD6nw3rG117cc+feowab0WzU//bm4L0vb6prrZXow1p/WegrcYWso75ep1Gms4yEEMfmkpN0FDUJkX2O47hbt26JxeKurq6ampq+vr5kslpT4JLJZCKRaGtrC4fDHMeJROLE3FwskT6gjgWHoNOrX2rURKNAAAU2kMRpXTdVKiAWpKEAum5vkwWiYZiPwkKQVuipFbMEKAAalm5bALwQXh2tFn9rnmdZjuP4fKEgk67f/JSK2fnJx3M6bS5fkBBiAOg80jIxOfP3P/11Pses7HTbnmhgIBrY0pkTk9MTk9MOKzX2NFTcI8RoBegOC9kaiURy4sQJsVh848aNTCZTvQvZ7fZz5y+M+8c+/vhj3aG3y9+uQB/Wy25buHzaYrHW6jULqYxaKU+mMk8Ck2vvsAAgx4tF6gY15dCqFDKpJJ5ILaQyHFuYfTpQSIQyma1mMqoQmWzV/Z1WW92UvNWDAhaydTKZ7MSJEyzL9vX15XJVTFdSW1t77Nixf/46IRKvToCzU53uTY3W0r3JiyYEFHhxDleQqjqp0sDmmXw6lp2PyHFG19TtO+sLXemfAKg3tZhr85MzxETk0eqJdZWueYHBxas+mfhYX5WutZNQwEK2S6lUdnV1PXjwICg58F79xE+uV+tpCEqlkpCQbCEfCoWK8ZFhmNK7lZriUFYOSa762q+9t1qJIAgeE2XzvEql+ou/eH987PH/+uB/mtu/6zvr09Jwn4KTdMzP5g0N9TGGcdL5cUiGAE6C7sZg/8T2q77C2oD1+NZHG0/hvWehPixku5LJ5KeffgoAAJJgfXUvBJCUSCTnz59XKBSfjyVWvsvmM6JKJBHjORbDV62nmbx/VUa+ILWh83QpRr/55pt2u/3Jkyc8z5Mkmc0xtWbLX/7VX3/0z8W+sdjE4ipmlVYNsWkAWO5Hq2y02sdQwEIEJpfLffbZZ9Fo9MDxf9HsrC8U2PHn4XqPr4OdwkWJYlqLstbWdhpfDgv1J7//l8NffXHjs89YdjEJOsdxxWeIwPhEKUZfvXq1tP6mRqH4lq8rHAj8zd//D4v77OyVxdwZ/wjA5bN3vpYCQCmdxj9urWbfSChgIRU0fv364qu6ujqbzXbv3r0qraErFlsosPH5pPdwCwljPxsINpx/+/2z4f9CgxMAPC0hUF6kksXN/lcV+MILAZ/NMs1t7mO+7oEv+hmGIUlSoVA8evTo/v37a6tUlFpY+Jv/8O8LhYJMJl9T5O7YB+1BQAELqZLp6WmSJC9evDg+Pl72xa4gmZSUSiX37j+2uY+fcdbWQniA1vkoADoGlM4KMFfa3CoMA7lM+vzp03/4bx+nFtbmTliO0WWK66swDOJjfZOTywOQO7OcqOwqZrO52lfcGajTHakup9PZ1tY2Ojr6+PHjypZctkq8rA9ry83Asj4skQh/+lWvSrH1G6Wyeq5M/Vo9ZZ3uOIZFH9+o9kV3AApYyE44ePBgc3Pz8PDws2fPKljszMzM2p0EQRTTp0xNTeXz232SlUarJ8RbX8FG03RL9++/1tw4n0wFJ2kA4PKq80dfiwPAVH9/BODFsbXeBBNbXb5ZFrC6OlqbbNo7t272939earqefu89gGAVh3WrAAUsZIdgGNbe3u5wOO7evRsKhap9OZIkX3/99adPnwYCgZVjeTusGLCaGuuTCymNWql1tnEDP7tjPfMOBZPDY2A0hADawAJtct20H2jdOAVAx3QAMUoHV8bgvSb4zWJc25SygHXyaKuVUuEYJpMQf/uf/uNSkvjd+1y2CvVhITuE5/mhoaHh4WGv19vR0XH79m2armK2coZhrl27trixYixvV9TIpTzwo/4A+AO22kPnGmHyKZiNMEmBlQaARBw4jAYeYiEaAJROKhkDmc4DX/+kMvOzOA5TyOWj94c/7f2k9EiL0+99zxb8qbBmVKA7LGQX4Dh+7Ngxg8Hw+eefx2Jb7xHfsMVn2RafBVn9yy3jeV7XfHLlnl3pw5KSBD2y9hG/woMCFrJrRCJRV1eXUqns6+tLJBKvPJ7jIZ9jVu7Z7IibUql0u93RaHR0dHQj8y3Wll828X2DimkndpHFYtndClQKCljILiMI4sSJExKJpK+vbynp1Tpi8ymL58JOVgxWrCUUifBiJqlY+JGM2Vz02QujhLBf1hKKdLpXPxIKQaqH47hnz54Fg8Guri6XyxUOh1dmiFYqlRzHsSyrb30LvE3vmvWvefQP/GtS6K3W7W2aiESXXnfazXIci84ly99ae/CKnZ0+j3zh8RSvVtut1CGXXamQ5QssJlHFgg9JyQtW6qxB07TBfuigy0EQ4oVU2ufxWY3yTrPo4dTK/A2Gd87Wa5SG4NQmnirycjzHYvhyD/VxT0vPd09n02manqrUJXYF6nRH9gSGYX7zm9/I5fJTp06xLDs0NFSckXD2rR670+UfHbn+MPU7FHw4FO2OAIC+u8e1lE0YzoDOTwHQORcl8UMMFpP2deohFgXQUxClAQAc3s5O8IcBur2dBYiJKYuLDl8D0IOi29sUBLANjIG3M7g6DbGiRsbk8rG5RCgyU2+h4vPJPJMGxeYWLbIsBzx/0OUASm9hWZidX3yIJBDjw9Pmdi3UKZx0ZMvT8V9JQuAshp/67lvfeavnP//1X+2pR/hsCgpYyB6STqevXLmi0+nOnDkzMTEBACqNOpXJ2Jyu7zeKrwW4d00AFDgmowCxIK3QLy0eDtIAoHAtvgAbAEDsY9D9EO58CZ2LeygA0AMNADlxMdUfBTZ68QUsjliuSUNcb5qajo0Fws56s16r3NokdaVCLhLhj548P66Q/uzL/B+c1wDEQrQyDzGiXZyhVY0N8rmtfmgbwfNQI5M9fzr+y198LNxoBagPC9njes6fdzQ0/vqTX03yjk2equ/ucUHvnZubPGtlPj8unzaazAatusCyDJOTSclH48F1E/i9CMdx+pZTGIaVwsSu9GHJZeTM6I2q5izbGShgIcIgMh2VyJQ7fFEun5bIlCqFvP1g48jY83SWWUhlUuPXcGwTNyksy01N7fIDh0wmM47vhwd6o4CFCIehXapczu3Lc+zyax4qtqB4qSwMwxRScToPK6cvPbz6QWNj44tPXgcaJawgNEqICEeaLswFij/jX9+0NR0mxFjxR8wzEglR2tzOjxjnJAROiDFCBDzPxUIPz3U2WNR88OHt7MyTzWZDL44SNjvrcRxPZ7K+sz5s7FlCJK43tRxyGTDMML8w6/O0VHB8sKhslPBou+vbp7ti0dlVjztynn7PLRoOVPcBSJWFAhYiPBwPjUfPy6SkTqNKpbMAUO95/TtmZasJHk6ly77/mw4HPI9hy6udrfYGMZscGhzs6upqbm6emZnJZrMbLyyVShnsh/RadYFlzZRBrlc5lPWMx34Sy8QBVArATAZP26F2nJ8zGS6YmuamgvObqOuLf4nVAeuA3ajRKFoPH/YdP/7FnduLHWpxka4BAoIKWGiUEBGebCYNAEqFXK9V6zSqR09SFhj9aDBRf/aN98+GB0jTvwa4UYnsfQCgqpF5jhzqOnEqEgo9fPD1uXPnampqPvnkk01NXlfUyAhCNOp/bmiyAsxO0KVpXEorlQTYiVzJcql0ZmryFz//J0Ev0EEBCxGwpdG32TAc85nmzRAeoHXONkWlsveV8DyfzWZmZmampqYwDNvIQqIinYECgK9HnxQKLAD0X+kv9mGtTIvcD4u5ZaqXK3lo9PmnH/0fJluWgPCF2Qf3LNTpjggPx4O++YRMSqqUNfRMDNb0ZG8niXtZAj+dWmEQxQfufrVy/v2mzCeSycRyO2/lFIcdo9bolNvIQbh3oICFCNJEKNx+5l+WNis49FYWsKaejZD5V6wEejk0SlhBW0+liCC7SKXR8TxX+gHgV25u5wf4VUXNhsa2U89izi9Xg02nKT0avu6cx+fztLzjMRS3602G0vE+T8vyyZ6Wt03bufgyd2vDH/7RDyiKqkxxuweNEiLCw/NgbntDJiXVSkWWyWEYxnMsLjK9fcRTa1J0mrDRqYzdXJtYyGBLXj9yMDQVLb62nzn4WiAawtYHwGO4qLTpauuwU8qZ6emtteOKo4QGnQYA6gzals6T1oWvGFeHWQGQimrcbtuBGg9GKdwHT/kc9bhUCspat8N2wHhKqZqjdMRQxvae2zYdDK59/MXLP6KyUcJ6o5HSe7zfOnLEO/Zo9Ec/+lFTU9Pdu3e38BvtLhSwEOHJZNIq4wGdVmWqM6gUNbE5yfGz367PDGedbrNCZmpUi03FKLD0zTcZ7CsCwXO1xeMzKV4UBVZPazAatN2+jpOnTxtqDaGJiVOnTh09evTBgwcbrGoxYNVbKFJCjAfCz8ceYTXNDt3cL36baXVLksCEaFABmVUwUCOB6QUAMquYD9GkispJQKdT0v5fP36wyWgFawJWvdlA6ZXJufivfvHzeDyezWb9fv/09PSmy91taJQQETAmlydJAiDU3/v/HPXutqz/o8+U7/9bPkSDFqC4wFi7mIa4tKk8XAfxn/Rvaq4Dj2EKhZIgCI1Go1arN36iSqMHgFF/IMssruN7PjkSnJECwEdXijsMVs9s/5XymWITAABbHDdYa3Q8fPWXH6YXFgc3b926VamSdxjqdEeEp8DxtS0n5TKpRq2YnJqFdXqyDT4P9A9uZfp4Wae7XqO0q9lbfdcZhnnJWS8xRU/LlbpVS4eqOkiIAQBgGJSasBzHMul5qra2mlfdIShgIYI0Pj7e8dYflzarN0qYSc5lI19XpGRk+1DAQoSK47hqTGgqy+MuEolecjCyw1AfFiJUOI4m5XzjoD85giCCgQIWgiCCgQIWgiCCgQIWgiCCgQIWgiCCgQIWgiCCgQIWgiCCgQIWgiCCgQIWgiCCgQIWgiCCgQIWgiCCgQIWgiCCgQIWgiCCgQIWgiCCgQIWgiCCgQIWgiCCgQIWgiCCgQIWgiCC8f8B7Rs2XOVfRAYAAAAASUVORK5CYII="
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BEGIN_PYTHON=""
+#!   BEGIN_TCL=""
+#!   CATEGORY=""
+#!   DESCRIPTION=""
+#!   DESTINATION="NONE"
+#!   DESTINATION_ROUTING_FILE=""
+#!   DOC_EXTENTS="2717.66 492.61"
+#!   DOC_TOP_LEFT="20 -377.561"
+#!   END_PYTHON=""
+#!   END_TCL=""
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="22350"
+#!   FME_BULK_MODE_THRESHOLD="2000"
+#!   FME_DOCUMENT_GUID="79a40abe-a888-402e-99a0-eba0724b7d00"
+#!   FME_DOCUMENT_PRIORGUID="4d1dc011-121a-4d7c-9b52-dfca878e9117,de18aa32-788a-454a-8b01-3d7533e7b152"
+#!   FME_GEOMETRY_HANDLING="Enhanced"
+#!   FME_IMPLICIT_CSMAP_REPROJECTION_MODE="Auto"
+#!   FME_NAMES_ENCODING="windows-1252"
+#!   FME_REPROJECTION_ENGINE="FME"
+#!   FME_SERVER_SERVICES=""
+#!   FME_STROKE_MAX_DEVIATION="0"
+#!   HISTORY=""
+#!   IGNORE_READER_FAILURE="No"
+#!   LAST_SAVE_BUILD="FME(R) 2022.0.1.1 (20220617 - Build 22350 - WIN64)"
+#!   LAST_SAVE_DATE="2022-12-09T10:31:56"
+#!   LOG_FILE=""
+#!   LOG_MAX_RECORDED_FEATURES="200"
+#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOG_FEATURES="200"
+#!   MULTI_WRITER_DATASET_ORDER="BY_ID"
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="38"
+#!   REDIRECT_TERMINATORS="NONE"
+#!   SAVE_ON_PROMPT_AND_RUN="Yes"
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   SOURCE="NONE"
+#!   SOURCE_ROUTING_FILE=""
+#!   TERMINATE_REJECTED="YES"
+#!   TITLE=""
+#!   USAGE=""
+#!   USE_MARKDOWN=""
+#!   VIEW_POSITION="-625.006 312.503"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   ZOOM_SCALE="100"
+#! >
+#! <DATASETS>
+#! <DATASET
+#!   IS_SOURCE="true"
+#!   ROLE="READER"
+#!   FORMAT="GEOJSON"
+#!   DATASET="$(SourceDataset_GEOJSON)"
+#!   KEYWORD="GEOJSON_1"
+#!   MULTI_GEOM_ALLOWED="false"
+#!   ATTR_MAX_LENGTH="0"
+#!   ATTR_CASE="ANY"
+#!   ALLOWED_FEAT_TYPES=""
+#!   WRITE_DEFS="true"
+#!   DEFLINE_TEMPLATE=""
+#!   DEFLINE_ATTRS="true"
+#!   EXPOSABLE_ATTRS="fme_basename string fme_color string fme_dataset string fme_feature_type string fme_fill_color string fme_geometry string fme_primary_axis float fme_rotation float fme_secondary_axis float fme_start_angle float fme_sweep_angle float fme_text_size float fme_text_string string fme_type string multi_reader_full_id int multi_reader_id int multi_reader_keyword string multi_reader_type string"
+#!   DEFLINE_PARMS=""
+#!   ATTR_INDEX_TYPES=""
+#!   ATTR_NAME_INVALID_CHARS=""
+#!   SUPPORTS_FEATURE_TYPE_FANOUT="true"
+#!   ENABLED="true"
+#!   DYNAMIC_FEATURE_TYPES_LIST_ON_MERGE="true"
+#!   DATASET_TYPE="FILE"
+#!   FTTR_TYPE="FEATURE_TYPES_ENCODED"
+#!   GENERATE_FME_BUILD_NUM="22350"
+#!   COORDSYS=""
+#!   FEATURE_TYPES="$(FEATURE_TYPES)"
+#!   MAX_FEATURES=""
+#!   MAX_FEATURES_PER_FEATURE_TYPE=""
+#!   MIN_FEATURES=""
+#!   START_FEATURE=""
+#! >
+#! <METAFILE_PARAMETER
+#!   NAME="MIME_TYPE"
+#!   VALUE="application/geo+json ADD_DISPOSITION"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="READER_DATASET_HINT"
+#!   VALUE="Select the GeoJSON file(s) or type the GeoJSON URL"
+#! />
+#! <METAFILE_PARAMETER
+#!   NAME="WRITER_DATASET_HINT"
+#!   VALUE="Specify a name for the GeoJSON file"
+#! />
+#! </DATASET>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_buffer"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_binarybuffer"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_xml"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_varchar(width)"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_varbinary(width)"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="boolean"
+#!   FME_TYPE="fme_boolean"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_char(width)"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_binary(width)"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_datetime"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_time"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_date"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="float"
+#!   FME_TYPE="fme_real64"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="float"
+#!   FME_TYPE="fme_real32"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="int"
+#!   FME_TYPE="fme_int64"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_uint64"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="int"
+#!   FME_TYPE="fme_int32"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="int"
+#!   FME_TYPE="fme_uint32"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="int"
+#!   FME_TYPE="fme_int16"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="int"
+#!   FME_TYPE="fme_uint16"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="int"
+#!   FME_TYPE="fme_int8"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="int"
+#!   FME_TYPE="fme_uint8"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="string"
+#!   FME_TYPE="fme_decimal(width,decimal)"
+#!   FORMAT="GEOJSON"
+#! />
+#! <DATA_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="json"
+#!   FME_TYPE="fme_json"
+#!   FORMAT="GEOJSON"
+#! />
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="json_point"
+#!   FME_TYPE="fme_point"
+#!   FORMAT="GEOJSON"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="json_line"
+#!   FME_TYPE="fme_line"
+#!   FORMAT="GEOJSON"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="json_polygon"
+#!   FME_TYPE="fme_area"
+#!   FORMAT="GEOJSON"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="json_text"
+#!   FME_TYPE="fme_text"
+#!   FORMAT="GEOJSON"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="json_ellipse"
+#!   FME_TYPE="fme_ellipse"
+#!   FORMAT="GEOJSON"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="json_arc"
+#!   FME_TYPE="fme_arc"
+#!   FORMAT="GEOJSON"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="json_rectangle"
+#!   FME_TYPE="fme_rectangle"
+#!   FORMAT="GEOJSON"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="json_rounded_rectangle"
+#!   FME_TYPE="fme_rounded_rectangle"
+#!   FORMAT="GEOJSON"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="json_raster"
+#!   FME_TYPE="fme_raster"
+#!   FORMAT="GEOJSON"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="json_no_geom"
+#!   FME_TYPE="fme_no_geom"
+#!   FORMAT="GEOJSON"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="json_collection"
+#!   FME_TYPE="fme_collection"
+#!   FORMAT="GEOJSON"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="json_line"
+#!   FME_TYPE="fme_surface"
+#!   FORMAT="GEOJSON"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="json_line"
+#!   FME_TYPE="fme_solid"
+#!   FORMAT="GEOJSON"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="json_polygon"
+#!   FME_TYPE="fme_point_cloud"
+#!   FORMAT="GEOJSON"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="json_polygon"
+#!   FME_TYPE="fme_voxel_grid"
+#!   FORMAT="GEOJSON"
+#! />
+#! <GEOM_TYPE
+#!   IS_SOURCE="true"
+#!   FORMAT_TYPE="json_no_geom"
+#!   FME_TYPE="fme_feature_table"
+#!   FORMAT="GEOJSON"
+#! />
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! <FEATURE_TYPE
+#!   IS_SOURCE="true"
+#!   NODE_NAME="polygon_rundt_vega"
+#!   FEATURE_TYPE_NAME=""
+#!   FEATURE_TYPE_NAME_QUALIFIER=""
+#!   IS_EDITABLE="false"
+#!   IDENTIFIER="2"
+#!   FEAT_GEOMTYPE="json_polygon"
+#!   POSITION="20 -0.62265622656227038"
+#!   BOUNDING_RECT="20 -0.62265622656227038 454 71"
+#!   ORDER="500000000000000"
+#!   COLLAPSED="true"
+#!   KEYWORD="GEOJSON_1"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   HIDDEN_USER_ATTRS=""
+#!   MERGE_FILTER="*"
+#!   MERGE_FILTER_TYPE="FILTER_TYPE_GLOB"
+#!   MERGE_FILTER_CASE_SENSITIVE="true"
+#!   DYNAMIC_SCHEMA="true"
+#! >
+#!     <FEAT_ATTRIBUTE ATTR_NAME="fme_feature_type" ATTR_TYPE="string"  EXPOSABLE_ATTR="true" ATTR_HAS_PORT="true" ATTR_VALUE=""/>
+#! </FEATURE_TYPE>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! <READER_DATASETS>
+#! <DATASET
+#!   NAME="GEOJSON_1"
+#!   OVERRIDE="-GEOJSON_1_DATASET"
+#!   DATASET="GEOJSON_1/polygon_rundt_vega.geojson"
+#! />
+#! </READER_DATASETS>
+#! <CONNECTIONS>
+#! <CONNECTION
+#!   NAME="Mesa 3.0 - romslo"
+#!   TYPE="DATABASE"
+#!   FAMILY="PostgreSQL"
+#!   USAGE="INTERNAL"
+#! />
+#! </CONNECTIONS>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI FILE_OR_URL SourceDataset_GEOJSON INCLUDE_WEB_BROWSER%Archive_Files(*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx)|*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx|Compressed_Files(*.bz2;*.gz)|*.bz2;*.gz|GeoJSON_Documents(*.json;*.geojson)|*.json;*.geojson|All_Files(*)|* Source GeoJSON File or URL:"
+#!   DEFAULT_VALUE="C:\Users\romslo\Norkart AS\MESA 3.0 - sensitivity atlas - General\Workspaces_romslo\polygon_rundt_vega.geojson"
+#!   IS_STAND_ALONE="false"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL FEATURE_TYPES_ENCODED FEATURE_TYPES C:&lt;backslash&gt;Users&lt;backslash&gt;romslo&lt;backslash&gt;Norkart&lt;space&gt;AS&lt;backslash&gt;MESA&lt;space&gt;3.0&lt;space&gt;-&lt;space&gt;sensitivity&lt;space&gt;atlas&lt;space&gt;-&lt;space&gt;General&lt;backslash&gt;Workspaces_romslo&lt;backslash&gt;polygon_rundt_vega.geojson,_FORMAT_OVERRIDE_,GEOJSON,_DATASET_OVERRIDE_,SourceDataset_GEOJSON,USE_SEARCH_ENVELOPE,NO,SEARCH_ENVELOPE_MINX,0,SEARCH_ENVELOPE_MINY,0,SEARCH_ENVELOPE_MAXX,0,SEARCH_ENVELOPE_MAXY,0,SEARCH_ENVELOPE_COORDINATE_SYSTEM,,CLIP_TO_ENVELOPE,NO,NETWORK_AUTHENTICATION,,COORDSYS,,START_FEATURE,,MAX_FEATURES,,MAX_FEATURES_PER_FEATURE_TYPE,,MIN_FEATURES,,USE_BASENAME_AS_DEFAULT_FEATURE_TYPE,Yes,_MERGE_SCHEMAS,YES,DYNAMIC_WORKFLOW,yes,FLATTEN_MODE,ALL_LEVELS,_MERGE_SCHEMAS,YES Feature Types to Read"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="false"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI OPTIONAL NAMEDGROUP PARAMETER delete_previous_grid%qdgc_levels Parameter Group"
+#!   DEFAULT_VALUE=""
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI LOOKUP_LISTBOX_OR_ATTR delete_previous_grid FME_DELIM:.%yes,1%no,0 delete_previous_grid"
+#!   DEFAULT_VALUE="1"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI CHOICE_OR_ATTR qdgc_levels 1%2%3%4%5%6 qdgc_levels"
+#!   DEFAULT_VALUE="2"
+#!   IS_STAND_ALONE="true"
+#! />
+#! <GLOBAL_PARAMETER
+#!   GUI_LINE="GUI STRING_OR_ATTR Projectname Project name"
+#!   DEFAULT_VALUE="romans_test_prosjekt"
+#!   IS_STAND_ALONE="true"
+#! />
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbeyJhY2Nlc3NNb2RlIjoicmVhZCIsImFsbG93VVJMIjp0cnVlLCJkZWZhdWx0VmFsdWUiOiJDOlxcVXNlcnNcXHJvbXNsb1xcTm9ya2FydCBBU1xcTUVTQSAzLjAgLSBzZW5zaXRpdml0eSBhdGxhcyAtIEdlbmVyYWxcXFdvcmtzcGFjZXNfcm9tc2xvXFxwb2x5Z29uX3J1bmR0X3ZlZ2EuZ2VvanNvbiIsImZpbHRlcnMiOlt7ImRlc2NyaXB0aW9uIjoiQXJjaGl2ZSBGaWxlcyIsImZpbHRlciI6WyIqLjd6IiwiKi43emlwIiwiKi5yYXIiLCIqLnJ2eiIsIioudGFyIiwiKi50YXIuYnoyIiwiKi50YXIuZ3oiLCIqLnRneiIsIiouemlwIiwiKi56aXB4Il19LHsiZGVzY3JpcHRpb24iOiJDb21wcmVzc2VkIEZpbGVzIiwiZmlsdGVyIjpbIiouYnoyIiwiKi5neiJdfSx7ImRlc2NyaXB0aW9uIjoiR2VvSlNPTiBEb2N1bWVudHMiLCJmaWx0ZXIiOlsiKi5qc29uIiwiKi5nZW9qc29uIl19LHsiZGVzY3JpcHRpb24iOiJBbGwgRmlsZXMiLCJmaWx0ZXIiOlsiKiJdfV0sImluY2x1ZGVXZWJCcm93c2VyIjp0cnVlLCJpdGVtc1RvU2VsZWN0IjoiZmlsZXMiLCJuYW1lIjoiU291cmNlRGF0YXNldF9HRU9KU09OIiwicHJvbXB0IjoiU291cmNlIEdlb0pTT04gRmlsZSBvciBVUkw6IiwicmVxdWlyZWQiOnRydWUsInNlbGVjdE11bHRpcGxlIjp0cnVlLCJzdXBwb3J0ZWRWYWx1ZVR5cGVzIjpbImdsb2JhbFBhcmFtZXRlciJdLCJ0eXBlIjoiZmlsZSIsInZhbGlkYXRlRXhpc3RlbmNlIjpmYWxzZSwidmFsdWVUeXBlIjoic3RyaW5nIn0seyJjaG9pY2VTZXR0aW5ncyI6eyJjaG9pY2VTZXQiOiJyZWFkZXJWYWx1ZXMiLCJjb25maWd1cmF0aW9uIjpbeyJuYW1lIjoiX0RBVEFTRVRfT1ZFUlJJREVfIiwidmFsdWUiOiJTb3VyY2VEYXRhc2V0X0dFT0pTT04ifSx7Im5hbWUiOiJVU0VfU0VBUkNIX0VOVkVMT1BFIiwidmFsdWUiOiJOTyJ9LHsibmFtZSI6IlNFQVJDSF9FTlZFTE9QRV9NSU5YIiwidmFsdWUiOiIwIn0seyJuYW1lIjoiU0VBUkNIX0VOVkVMT1BFX01JTlkiLCJ2YWx1ZSI6IjAifSx7Im5hbWUiOiJTRUFSQ0hfRU5WRUxPUEVfTUFYWCIsInZhbHVlIjoiMCJ9LHsibmFtZSI6IlNFQVJDSF9FTlZFTE9QRV9NQVhZIiwidmFsdWUiOiIwIn0seyJuYW1lIjoiU0VBUkNIX0VOVkVMT1BFX0NPT1JESU5BVEVfU1lTVEVNIiwidmFsdWUiOiIifSx7Im5hbWUiOiJDTElQX1RPX0VOVkVMT1BFIiwidmFsdWUiOiJOTyJ9LHsibmFtZSI6Ik5FVFdPUktfQVVUSEVOVElDQVRJT04iLCJ2YWx1ZSI6IiJ9LHsibmFtZSI6IkNPT1JEU1lTIiwidmFsdWUiOiIifSx7Im5hbWUiOiJTVEFSVF9GRUFUVVJFIiwidmFsdWUiOiIifSx7Im5hbWUiOiJNQVhfRkVBVFVSRVMiLCJ2YWx1ZSI6IiJ9LHsibmFtZSI6Ik1BWF9GRUFUVVJFU19QRVJfRkVBVFVSRV9UWVBFIiwidmFsdWUiOiIifSx7Im5hbWUiOiJNSU5fRkVBVFVSRVMiLCJ2YWx1ZSI6IiJ9LHsibmFtZSI6IlVTRV9CQVNFTkFNRV9BU19ERUZBVUxUX0ZFQVRVUkVfVFlQRSIsInZhbHVlIjoiWWVzIn0seyJuYW1lIjoiX01FUkdFX1NDSEVNQVMiLCJ2YWx1ZSI6IllFUyJ9LHsibmFtZSI6IkRZTkFNSUNfV09SS0ZMT1ciLCJ2YWx1ZSI6InllcyJ9LHsibmFtZSI6IkZMQVRURU5fTU9ERSIsInZhbHVlIjoiQUxMX0xFVkVMUyJ9LHsibmFtZSI6Il9NRVJHRV9TQ0hFTUFTIiwidmFsdWUiOiJZRVMifSx7Im5hbWUiOiJSRVRSSUVWRV9BTExfVEFCTEVfTkFNRVMiLCJ2YWx1ZSI6IllFUyJ9XSwiZGF0YXNldCI6IkM6PGJhY2tzbGFzaD5Vc2VyczxiYWNrc2xhc2g+cm9tc2xvPGJhY2tzbGFzaD5Ob3JrYXJ0PHNwYWNlPkFTPGJhY2tzbGFzaD5NRVNBPHNwYWNlPjMuMDxzcGFjZT4tPHNwYWNlPnNlbnNpdGl2aXR5PHNwYWNlPmF0bGFzPHNwYWNlPi08c3BhY2U+R2VuZXJhbDxiYWNrc2xhc2g+V29ya3NwYWNlc19yb21zbG88YmFja3NsYXNoPnBvbHlnb25fcnVuZHRfdmVnYS5nZW9qc29uIiwiZm9ybWF0IjoiR0VPSlNPTiIsInZhbHVlc1RvVXNlIjoiZmVhdHVyZVR5cGVzIn0sImRlZmF1bHRWYWx1ZSI6IiIsImhpZGRlbiI6ZmFsc2UsIm5hbWUiOiJGRUFUVVJFX1RZUEVTIiwicHJvbXB0IjoiRmVhdHVyZSBUeXBlcyB0byBSZWFkIiwicmVxdWlyZWQiOmZhbHNlLCJ0eXBlIjoibGlzdGJveCIsInZhbHVlVHlwZSI6InN0cmluZ0VuY29kZWRQYXJ0cyJ9LHsiZGVmYXVsdFZhbHVlIjoiIiwiaGlkZGVuIjpmYWxzZSwibmFtZSI6IlBBUkFNRVRFUiIsInBhcmFtZXRlcnMiOlt7ImNob2ljZVNldHRpbmdzIjp7ImNob2ljZVNldCI6InVzZXJEZWZpbmVkIiwiY2hvaWNlcyI6W3siZGlzcGxheSI6InllcyIsInZhbHVlIjoiMSJ9LHsiZGlzcGxheSI6Im5vIiwidmFsdWUiOiIwIn1dfSwiZGVmYXVsdFZhbHVlIjoiMSIsImhpZGRlbiI6ZmFsc2UsIm5hbWUiOiJkZWxldGVfcHJldmlvdXNfZ3JpZCIsIm5vZGVEZWxpbWl0ZXIiOiIuIiwicHJvbXB0IjoiZGVsZXRlX3ByZXZpb3VzX2dyaWQiLCJyZXF1aXJlZCI6dHJ1ZSwic2luZ2xlU2VsZWN0aW9uIjpmYWxzZSwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJleHByZXNzaW9uIiwiZ2xvYmFsUGFyYW1ldGVyIl0sInR5cGUiOiJ0cmVlIiwidmFsdWVUeXBlIjoic3RyaW5nIn0seyJjaG9pY2VTZXR0aW5ncyI6eyJjaG9pY2VTZXQiOiJ1c2VyRGVmaW5lZCIsImNob2ljZXMiOlt7ImRpc3BsYXkiOiIxIiwidmFsdWUiOiIxIn0seyJkaXNwbGF5IjoiMiIsInZhbHVlIjoiMiJ9LHsiZGlzcGxheSI6IjMiLCJ2YWx1ZSI6IjMifSx7ImRpc3BsYXkiOiI0IiwidmFsdWUiOiI0In0seyJkaXNwbGF5IjoiNSIsInZhbHVlIjoiNSJ9LHsiZGlzcGxheSI6IjYiLCJ2YWx1ZSI6IjYifV19LCJkZWZhdWx0VmFsdWUiOiIyIiwiaGlkZGVuIjpmYWxzZSwibmFtZSI6InFkZ2NfbGV2ZWxzIiwicHJvbXB0IjoicWRnY19sZXZlbHMiLCJyZXF1aXJlZCI6dHJ1ZSwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJleHByZXNzaW9uIiwiZ2xvYmFsUGFyYW1ldGVyIl0sInR5cGUiOiJkcm9wZG93biIsInZhbHVlVHlwZSI6InN0cmluZyJ9XSwicHJvbXB0IjoiUGFyYW1ldGVyIEdyb3VwIiwicmVxdWlyZWQiOmZhbHNlLCJ0eXBlIjoiZ3JvdXAiLCJ2YWx1ZVR5cGUiOiJzdHJpbmcifSx7ImRlZmF1bHRWYWx1ZSI6InJvbWFuc190ZXN0X3Byb3NqZWt0IiwiaGlkZGVuIjpmYWxzZSwibmFtZSI6IlByb2plY3RuYW1lIiwicHJvbXB0IjoiUHJvamVjdCBuYW1lIiwicmVxdWlyZWQiOnRydWUsInNob3dFZGl0QnV0dG9uIjpmYWxzZSwic3VwcG9ydGVkVmFsdWVUeXBlcyI6WyJleHByZXNzaW9uIiwiZ2xvYmFsUGFyYW1ldGVyIl0sInR5cGUiOiJ0ZXh0IiwidmFsdWVUeXBlIjoic3RyaW5nIn1dfQ=="
+#! >
+#! <PARAMETER_INFO>
+#!     <INFO NAME="SourceDataset_GEOJSON" 
+#!   DEFAULT_VALUE="C:\Users\romslo\Norkart AS\MESA 3.0 - sensitivity atlas - General\Workspaces_romslo\polygon_rundt_vega.geojson"
+#!   SCOPE="DEPENDENT"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI FILE_OR_URL SourceDataset_GEOJSON INCLUDE_WEB_BROWSER%Archive_Files(*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx)|*.7z;*.7zip;*.rar;*.rvz;*.tar;*.tar.bz2;*.tar.gz;*.tgz;*.zip;*.zipx|Compressed_Files(*.bz2;*.gz)|*.bz2;*.gz|GeoJSON_Documents(*.json;*.geojson)|*.json;*.geojson|All_Files(*)|* Source GeoJSON File or URL:"
+#! />
+#!     <INFO NAME="FEATURE_TYPES" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="DEPENDENT"
+#!   GENERATED_GUI_LINE="false"
+#!   GUI_LINE="GUI OPTIONAL FEATURE_TYPES_ENCODED FEATURE_TYPES C:&lt;backslash&gt;Users&lt;backslash&gt;romslo&lt;backslash&gt;Norkart&lt;space&gt;AS&lt;backslash&gt;MESA&lt;space&gt;3.0&lt;space&gt;-&lt;space&gt;sensitivity&lt;space&gt;atlas&lt;space&gt;-&lt;space&gt;General&lt;backslash&gt;Workspaces_romslo&lt;backslash&gt;polygon_rundt_vega.geojson,_FORMAT_OVERRIDE_,GEOJSON,_DATASET_OVERRIDE_,SourceDataset_GEOJSON,USE_SEARCH_ENVELOPE,NO,SEARCH_ENVELOPE_MINX,0,SEARCH_ENVELOPE_MINY,0,SEARCH_ENVELOPE_MAXX,0,SEARCH_ENVELOPE_MAXY,0,SEARCH_ENVELOPE_COORDINATE_SYSTEM,,CLIP_TO_ENVELOPE,NO,NETWORK_AUTHENTICATION,,COORDSYS,,START_FEATURE,,MAX_FEATURES,,MAX_FEATURES_PER_FEATURE_TYPE,,MIN_FEATURES,,USE_BASENAME_AS_DEFAULT_FEATURE_TYPE,Yes,_MERGE_SCHEMAS,YES,DYNAMIC_WORKFLOW,yes,FLATTEN_MODE,ALL_LEVELS,_MERGE_SCHEMAS,YES Feature Types to Read"
+#! />
+#!     <INFO NAME="PARAMETER" 
+#!   DEFAULT_VALUE=""
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI OPTIONAL NAMEDGROUP PARAMETER delete_previous_grid%qdgc_levels Parameter Group"
+#! />
+#!     <INFO NAME="delete_previous_grid" 
+#!   DEFAULT_VALUE="1"
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI LOOKUP_LISTBOX_OR_ATTR delete_previous_grid FME_DELIM:.%yes,1%no,0 delete_previous_grid"
+#! />
+#!     <INFO NAME="qdgc_levels" 
+#!   DEFAULT_VALUE="2"
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI CHOICE_OR_ATTR qdgc_levels 1%2%3%4%5%6 qdgc_levels"
+#! />
+#!     <INFO NAME="Projectname" 
+#!   DEFAULT_VALUE="romans_test_prosjekt"
+#!   SCOPE="STAND_ALONE"
+#!   GENERATED_GUI_LINE="true"
+#!   GUI_LINE="GUI STRING_OR_ATTR Projectname Project name"
+#! />
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="10"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Consolas&apos;;&quot;&gt;qdgc grid into postgis to geocode database&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="2143.3516449353715 115.04853393360156"
+#!   TOP_LEFT="2143.3516449353715 115.04853393360156"
+#!   BOTTOM_RIGHT="2737.6614828485654 114.04853393360156"
+#!   BOUNDING_RECT="2143.3516449353715 115.04853393360156 594.30983791319397 1"
+#!   ORDER="500000000000322.13"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.28627450980392155,0.29803921568627451,0.0078431372549019607,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="5"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="3"
+#!   TYPE="PROJReprojector"
+#!   VERSION="1"
+#!   POSITION="648.00875008750086 -0.62265622656227038"
+#!   BOUNDING_RECT="648.00875008750086 -0.62265622656227038 454 71"
+#!   ORDER="500000000000391.13"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="22350"
+#! >
+#!     <OUTPUT_FEAT NAME="REPROJECTED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="fme_feature_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="AUTOMATIC_PARAMETERS_GROUP" PARM_VALUE="FME_DISCLOSURE_OPEN"/>
+#!     <XFORM_PARM PARM_NAME="COORD_EPOCH" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="DEST" PARM_VALUE="EPSG:4326"/>
+#!     <XFORM_PARM PARM_NAME="DEST_TAG" PARM_VALUE="EPSG:4326"/>
+#!     <XFORM_PARM PARM_NAME="INTERPOLATION_TYPE_NAME" PARM_VALUE="Nearest Neighbor"/>
+#!     <XFORM_PARM PARM_NAME="MANUAL_PARAMETERS_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_TAG_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="RASTER_CELL_SIZE" PARM_VALUE="Preserve Cells"/>
+#!     <XFORM_PARM PARM_NAME="RASTER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="RASTER_TOLERANCE" PARM_VALUE="0.0"/>
+#!     <XFORM_PARM PARM_NAME="SOURCE" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMATION" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORM_TYPE" PARM_VALUE="Automatic Transformation"/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="PROJReprojector_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="5"
+#!   TYPE="SQLExecutor"
+#!   VERSION="9"
+#!   POSITION="2185.3343593227005 -113.65781402806931"
+#!   BOUNDING_RECT="2185.3343593227005 -113.65781402806931 552.30983791319397 71"
+#!   ORDER="500000000000007"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="22350"
+#! >
+#!     <OUTPUT_FEAT NAME="&lt;SCHEMA&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="fme_feature_type_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attribute{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attribute{}.fme_data_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attribute{}.native_data_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_basename" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="RESULT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <OUTPUT_FEAT NAME="INITIATOR"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="delete" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="query" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="fme_feature_type" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_geometry" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_matched_records" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="3"/>
+#!     <XFORM_ATTR ATTR_NAME="delete" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="query" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="fme_feature_type" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_geometry" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_reader_error" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_TYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_IGNORE_NULLS" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="COMBINE_ATTRS" PARM_VALUE="Result Attributes Only"/>
+#!     <XFORM_PARM PARM_NAME="COMBINE_GEOM" PARM_VALUE="Initiator Geometry Only"/>
+#!     <XFORM_PARM PARM_NAME="COORDSYS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="DATASET" PARM_VALUE="Mesa&lt;space&gt;3.0&lt;space&gt;-&lt;space&gt;romslo"/>
+#!     <XFORM_PARM PARM_NAME="DB_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="DYNGROUP_0" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="EXPOSED_ATTRIBUTE_LIST" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="FEATURETYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="FORMAT" PARM_VALUE="POSTGRES"/>
+#!     <XFORM_PARM PARM_NAME="FORMAT_ATTRIBUTE_TYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="FORMAT_PARAMS" PARM_VALUE="POSTGRES_READ_TIME_WITH_TIMEZONE,&quot;IGNORE TEXT&quot;,POSTGRES&lt;space&gt;,POSTGRES_SCHEMAS_FOR_TABLE_LISTING,&quot;IGNORE TEXT&quot;,POSTGRES&lt;space&gt;Schemas&lt;space&gt;for&lt;space&gt;Tables:,POSTGRES_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS,&quot;IGNORE TEXT&quot;,POSTGRES&lt;space&gt;,POSTGRES_CREATE_FEATURE_TABLES_FROM_DATA,&quot;IGNORE TEXT&quot;,POSTGRES&lt;space&gt;,POSTGRES_NAMED_CONNECTION,&quot;IGNORE TEXT&quot;,POSTGRES&lt;space&gt;Connection:"/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_FEATURES_DISPLAY" PARM_VALUE="Schema and Data Features"/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_FEATURES_GROUP" PARM_VALUE="FME_DISCLOSURE_CLOSED"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_CREATE_FEATURE_TABLES_FROM_DATA" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_NAMED_CONNECTION" PARM_VALUE="MESA&lt;space&gt;3.0"/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_READ_TIME_WITH_TIMEZONE" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_SCHEMAS_FOR_TABLE_LISTING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="SQL_STATEMENT" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;query&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="SQLExecutor_3"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="6"
+#!   TYPE="GeometryExtractor"
+#!   VERSION="17"
+#!   POSITION="1624.8719019475589 -306.56097762760726"
+#!   BOUNDING_RECT="1624.8719019475589 -306.56097762760726 461.00106825772946 71"
+#!   ORDER="500000000000320.13"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="22350"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="fme_feature_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_geometry" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="fme_feature_type" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ATTR" PARM_VALUE="_geometry"/>
+#!     <XFORM_PARM PARM_NAME="ELLIPSOID_NAME" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GENERATE_GEOMETRY_IDS" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GEOHASH_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GEOHASH_PRECISION_DISPLAY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="ISO6709_FORMAT_CHOICE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="ISO6709_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="ISO6709_MAX_DECIMAL_PLACES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="JSON_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="JSON_MAX_DIGITS" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="KIND_LONG" PARM_VALUE="OGC Well Known Text"/>
+#!     <XFORM_PARM PARM_NAME="LETTERING" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LEVELS_ATTR" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MGRS_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MSSQL_FORMAT_CHOICE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MSSQL_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="OAN_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="OGCVERSION" PARM_VALUE="1.2"/>
+#!     <XFORM_PARM PARM_NAME="OGC_GROUP" PARM_VALUE="FME_DISCLOSURE_OPEN"/>
+#!     <XFORM_PARM PARM_NAME="OGC_WKT_PRECISION_DISPLAY" PARM_VALUE="64-bit"/>
+#!     <XFORM_PARM PARM_NAME="OGEOSMS_URL_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="OMIT_NAMESPACES_DISPLAY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PRECISION" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="PREFER_POLYGON_OVER_SURFACE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="REMOVE_GEOMETRY" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SRS_AXIS_ORDER_DISPLAY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="SRS_NAME" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="GeometryExtractor_3"/>
+#!     <XFORM_PARM PARM_NAME="XML_GROUP" PARM_VALUE="&lt;Unused&gt;"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="7"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="1631.8729702052883 -134.00240829191387"
+#!   BOUNDING_RECT="1631.8729702052883 -134.00240829191387 454 71"
+#!   ORDER="500000000000321.13"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="22350"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="delete" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="query" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_feature_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="_geometry" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; delete SET_TO &quot;FME_CONDITIONAL:DEFAULT_VALUE&apos;0&apos;BOOL_OP;OR;COMPOSITE_TEST;1;CASE_INSENSITIVE_TEST $(delete_previous_grid) CONTAINS 1&apos;1&apos;FME_NUM_CONDITIONS2___&quot;  query SET_TO FME_SQL_DELIMITER&lt;space&gt;&lt;semicolon&gt;&lt;lf&gt;CREATE&lt;space&gt;TABLE&lt;space&gt;if&lt;space&gt;not&lt;space&gt;exists&lt;space&gt;geocode.tbl_geocode_object&lt;lf&gt;&lt;openparen&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;id&lt;space&gt;character&lt;space&gt;varying&lt;openparen&gt;20&lt;closeparen&gt;&lt;comma&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;area_reference&lt;space&gt;character&lt;space&gt;varying&lt;openparen&gt;50&lt;closeparen&gt;&lt;comma&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;level_qdgc&lt;space&gt;integer&lt;comma&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;cellsize_degrees&lt;space&gt;decimal&lt;comma&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;lon_center&lt;space&gt;decimal&lt;comma&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;lat_center&lt;space&gt;decimal&lt;comma&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;area_km2&lt;space&gt;decimal&lt;comma&gt;&lt;lf&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;&lt;space&gt;geom&lt;space&gt;geometry&lt;lf&gt;&lt;closeparen&gt;&lt;semicolon&gt;&lt;lf&gt;SELECT&lt;space&gt;*&lt;space&gt;FROM&lt;space&gt;qdgc_fillqdgc_rs&lt;openparen&gt;&lt;apos&gt;Norge&lt;apos&gt;&lt;comma&gt;6&lt;comma&gt;0&lt;comma&gt;&lt;apos&gt;geocode&lt;apos&gt;&lt;comma&gt;ST_PolygonFromText&lt;openparen&gt;&lt;apos&gt;&lt;at&gt;Value&lt;openparen&gt;_geometry&lt;closeparen&gt;&lt;apos&gt;&lt;comma&gt;4326&lt;closeparen&gt;&lt;closeparen&gt;&lt;semicolon&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_7"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="4"
+#!   SOURCE_NODE="2"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="-1"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="11"
+#!   SOURCE_NODE="3"
+#!   TARGET_NODE="6"
+#!   SOURCE_PORT_DESC="fo 0 REPROJECTED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="8"
+#!   SOURCE_NODE="6"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="9"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="5"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 INITIATOR"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </WORKSPACE>
+
+FME_PYTHON_VERSION 38
+ARCGIS_COMPATIBILITY ARCGIS_AUTO
+GUI IGNORE SourceDataset_GEOJSON_1,GEOJSON_IN_USE_SEARCH_ENVELOPE_GEOJSON_1,GEOJSON_IN_SEARCH_ENVELOPE_MINX_GEOJSON_1,GEOJSON_IN_SEARCH_ENVELOPE_MINY_GEOJSON_1,GEOJSON_IN_SEARCH_ENVELOPE_MAXX_GEOJSON_1,GEOJSON_IN_SEARCH_ENVELOPE_MAXY_GEOJSON_1,GEOJSON_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_GEOJSON_1,GEOJSON_IN_CLIP_TO_ENVELOPE_GEOJSON_1,GEOJSON_IN_NETWORK_AUTHENTICATION_GEOJSON_1
+# ============================================================================
+DEFAULT_MACRO SourceDataset_GEOJSON C:\Users\romslo\Norkart AS\MESA 3.0 - sensitivity atlas - General\Workspaces_romslo\polygon_rundt_vega.geojson
+
+DEFAULT_MACRO FEATURE_TYPES 
+
+DEFAULT_MACRO PARAMETER 
+
+DEFAULT_MACRO delete_previous_grid 1
+
+DEFAULT_MACRO qdgc_levels 2
+
+DEFAULT_MACRO Projectname romans_test_prosjekt
+
+# ============================================================================
+INCLUDE [ if {{$(SourceDataset_GEOJSON)} == {}} { puts_real {Parameter 'SourceDataset_GEOJSON' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(delete_previous_grid)} == {}} { puts_real {Parameter 'delete_previous_grid' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(qdgc_levels)} == {}} { puts_real {Parameter 'qdgc_levels' must be given a value.}; exit 1; }; ]
+INCLUDE [ if {{$(Projectname)} == {}} { puts_real {Parameter 'Projectname' must be given a value.}; exit 1; }; ]
+#! START_HEADER
+#! START_WB_HEADER
+READER_TYPE MULTI_READER
+MULTI_READER_TYPE{0} GEOJSON
+MULTI_READER_KEYWORD{0} GEOJSON_1
+MULTI_READER_GEN_DIRECTIVES{0} SEARCH_ENVELOPE_COORDINATE_SYSTEM,,USE_BASENAME_AS_DEFAULT_FEATURE_TYPE,Yes,GEOJSON_EXPOSE_FORMAT_ATTRS,,_MERGE_SCHEMAS,YES,DYNAMIC_WORKFLOW,yes,SEARCH_ENVELOPE_MINY,0,EXPOSE_ATTRS_GROUP,,FLATTEN_MODE,ALL_LEVELS,SEARCH_ENVELOPE_MAXY,0,CLIP_TO_ENVELOPE,NO,SEARCH_ENVELOPE_MAXX,0,USE_SEARCH_ENVELOPE,NO,SEARCH_ENVELOPE_MINX,0
+WRITER_TYPE NULL
+WRITER_KEYWORD NULL_DEST
+NULL_DEST_DATASET null
+#! END_WB_HEADER
+#! START_WB_HEADER
+MACRO WB_KEYWORD "GEOJSON_1"
+#! END_WB_HEADER
+#! START_SOURCE_HEADER GEOJSON GEOJSON_1
+GEOJSON_1_DYNAMIC_WORKFLOW YES
+# The dataset this mapping file was generated from was:
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+DEFAULT_MACRO SourceDataset
+INCLUDE [ if {{$(SourceDataset)} != ""} {                        \
+ puts {DEFAULT_MACRO SourceDataset_GEOJSON_1 $(SourceDataset)}     \
+ } ]
+#! END_WB_HEADER
+#! START_SOURCE_HEADER GEOJSON GEOJSON_1
+DEFAULT_MACRO SourceDataset_GEOJSON_1 $(SourceDataset_GEOJSON)
+GUI FILE_OR_URL SourceDataset_GEOJSON_1 GeoJSON_Documents(*.json;*.geojson)|*.json;*.geojson|All_Files|* Source GeoJSON File or URL:
+DEFAULT_MACRO GEOJSON_IN_FLATTEN_MODE_GEOJSON_1 ALL_LEVELS
+GEOJSON_1_FLATTEN_MODE "$(GEOJSON_IN_FLATTEN_MODE_GEOJSON_1)"
+DEFAULT_MACRO GEOJSON_IN_EXPOSE_ATTRS_GROUP_GEOJSON_1 
+GEOJSON_1_EXPOSE_ATTRS_GROUP "$(GEOJSON_IN_EXPOSE_ATTRS_GROUP_GEOJSON_1)"
+DEFAULT_MACRO GEOJSON_IN_USE_BASENAME_AS_DEFAULT_FEATURE_TYPE_GEOJSON_1 Yes
+GEOJSON_1_USE_BASENAME_AS_DEFAULT_FEATURE_TYPE "$(GEOJSON_IN_USE_BASENAME_AS_DEFAULT_FEATURE_TYPE_GEOJSON_1)"
+# Include this file in source setting section to add external search envelope processing
+# Zero as a default means we don't do any search -- this makes workbench happier
+DEFAULT_MACRO GEOJSON_IN_USE_SEARCH_ENVELOPE_GEOJSON_1 NO
+GEOJSON_1_USE_SEARCH_ENVELOPE "$(GEOJSON_IN_USE_SEARCH_ENVELOPE_GEOJSON_1)"
+GUI ACTIVEDISCLOSUREGROUP GEOJSON_IN_USE_SEARCH_ENVELOPE_GEOJSON_1 GEOJSON_IN_SEARCH_ENVELOPE_MINX_GEOJSON_1%GEOJSON_IN_SEARCH_ENVELOPE_MINY_GEOJSON_1%GEOJSON_IN_SEARCH_ENVELOPE_MAXX_GEOJSON_1%GEOJSON_IN_SEARCH_ENVELOPE_MAXY_GEOJSON_1%GEOJSON_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_GEOJSON_1%GEOJSON_IN_CLIP_TO_ENVELOPE_GEOJSON_1%GEOJSON_IN_SEARCH_METHOD%GEOJSON_IN_SEARCH_METHOD_FILTER%GEOJSON_IN_SEARCH_ORDER%GEOJSON_IN_SEARCH_FEATURE%GEOJSON_IN_DUMMY_SEARCH_ENVELOPE_PARAMETER Use Search Envelope
+# ===========================================================================
+GUI LOOKUP GEOJSON_IN_SEARCH_ENVELOPE_MINX_GEOJSON_1 <Unused>,0 
+DEFAULT_MACRO GEOJSON_IN_SEARCH_ENVELOPE_MINX_GEOJSON_1 0
+GEOJSON_1_SEARCH_ENVELOPE "$(GEOJSON_IN_SEARCH_ENVELOPE_MINX_GEOJSON_1)"
+GUI OPTIONAL FLOAT GEOJSON_IN_SEARCH_ENVELOPE_MINX_GEOJSON_1 Minimum X:
+# ===========================================================================
+GUI LOOKUP GEOJSON_IN_SEARCH_ENVELOPE_MINY_GEOJSON_1 <Unused>,0 
+DEFAULT_MACRO GEOJSON_IN_SEARCH_ENVELOPE_MINY_GEOJSON_1 0
+GEOJSON_1_SEARCH_ENVELOPE "$(GEOJSON_IN_SEARCH_ENVELOPE_MINY_GEOJSON_1)"
+GUI OPTIONAL FLOAT GEOJSON_IN_SEARCH_ENVELOPE_MINY_GEOJSON_1 Minimum Y:
+# ===========================================================================
+GUI LOOKUP GEOJSON_IN_SEARCH_ENVELOPE_MAXX_GEOJSON_1 <Unused>,0 
+DEFAULT_MACRO GEOJSON_IN_SEARCH_ENVELOPE_MAXX_GEOJSON_1 0
+GEOJSON_1_SEARCH_ENVELOPE "$(GEOJSON_IN_SEARCH_ENVELOPE_MAXX_GEOJSON_1)"
+GUI OPTIONAL FLOAT GEOJSON_IN_SEARCH_ENVELOPE_MAXX_GEOJSON_1 Maximum X:
+# ===========================================================================
+GUI LOOKUP GEOJSON_IN_SEARCH_ENVELOPE_MAXY_GEOJSON_1 <Unused>,0 
+DEFAULT_MACRO GEOJSON_IN_SEARCH_ENVELOPE_MAXY_GEOJSON_1 0
+GEOJSON_1_SEARCH_ENVELOPE "$(GEOJSON_IN_SEARCH_ENVELOPE_MAXY_GEOJSON_1)"
+GUI OPTIONAL FLOAT GEOJSON_IN_SEARCH_ENVELOPE_MAXY_GEOJSON_1 Maximum Y:
+# ===========================================================================
+GUI LOOKUP GEOJSON_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_GEOJSON_1 <Unused>, 
+DEFAULT_MACRO GEOJSON_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_GEOJSON_1 
+GEOJSON_1_SEARCH_ENVELOPE "$(GEOJSON_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_GEOJSON_1)"
+GUI OPTIONAL COORDSYS GEOJSON_IN_SEARCH_ENVELOPE_COORDINATE_SYSTEM_GEOJSON_1 Search Envelope Coordinate System:
+# ===========================================================================
+# BUG18999: We now have a soft clip to fall back on like native spatial index
+# thus we are reintroducing the clip to envelop as an option for users.
+# Defualt to soft clip as per the existing database readers we are emulating
+GUI LOOKUP GEOJSON_IN_CLIP_TO_ENVELOPE_GEOJSON_1 <Unused>,NO 
+DEFAULT_MACRO GEOJSON_IN_CLIP_TO_ENVELOPE_GEOJSON_1 NO
+GEOJSON_1_CLIP_TO_ENVELOPE "$(GEOJSON_IN_CLIP_TO_ENVELOPE_GEOJSON_1)"
+GUI OPTIONAL CHECKBOX GEOJSON_IN_CLIP_TO_ENVELOPE_GEOJSON_1 YES%NO Clip to Search Envelope
+# ===========================================================================
+DEFAULT_MACRO GEOJSON_IN_NETWORK_AUTHENTICATION_GEOJSON_1 
+GEOJSON_1_NETWORK_AUTHENTICATION "$(GEOJSON_IN_NETWORK_AUTHENTICATION_GEOJSON_1)"
+GUI OPTIONAL AUTHENTICATOR GEOJSON_IN_NETWORK_AUTHENTICATION_GEOJSON_1 CONTAINER%GROUP%CONTAINER_TITLE%"Network Authentication"%PROMPT_TYPE%NETWORK Network Authentication
+# ============================================================================
+DEFAULT_MACRO GEOJSON_IN_ATTRIBUTE_READING_GEOJSON_1 ALL
+GEOJSON_1_ATTRIBUTE_READING "$(GEOJSON_IN_ATTRIBUTE_READING_GEOJSON_1)"
+# ============================================================================
+GEOJSON_1_GENERATE_FME_BUILD_NUM 22350
+GEOJSON_1_DATASET "$(SourceDataset_GEOJSON_1)"
+#! END_SOURCE_HEADER
+#! START_WB_HEADER
+#! END_WB_HEADER
+#! END_HEADER
+
+LOG_FILENAME "$(FME_MF_DIR)sensitivity_generate_geocode_qdgc.log"
+LOG_APPEND NO
+LOG_FILTER_MASK -1
+LOG_MAX_FEATURES 200
+LOG_MAX_RECORDED_FEATURES 200
+FME_REPROJECTION_ENGINE FME
+FME_IMPLICIT_CSMAP_REPROJECTION_MODE Auto
+FME_GEOMETRY_HANDLING Enhanced
+FME_STROKE_MAX_DEVIATION 0
+FME_NAMES_ENCODING windows-1252
+FME_BULK_MODE_THRESHOLD 2000
+LAST_SAVE_BUILD "FME 2022.0.1.1 (20220617 - Build 22350 - WIN64)"
+DEFAULT_MACRO DATASET_KEYWORD_GEOJSON_1 GEOJSON_1
+# -------------------------------------------------------------------------
+
+GEOJSON_1_READER_META_ATTRIBUTES fme_feature_type
+
+# -------------------------------------------------------------------------
+
+GEOJSON_1_FEATURE_TYPES $(FEATURE_TYPES)
+MULTI_READER_CONTINUE_ON_READER_FAILURE No
+
+# -------------------------------------------------------------------------
+
+MACRO WORKSPACE_NAME sensitivity_generate_geocode_qdgc
+MACRO FME_VIEWER_APP fmedatainspector
+# -------------------------------------------------------------------------
+GEOJSON_1_DEF polygon_rundt_vega
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * RoutingFactory   FACTORY_NAME "Router and Unexpected Input Remover"   COMMAND_PARM_EVALUATION SINGLE_PASS   MULTI_READER_KEYWORD $(DATASET_KEYWORD_GEOJSON_1)   INPUT FEATURE_TYPE *    ROUTE GEOJSON GEOJSON_1::polygon_rundt_vega multi_reader_keyword,$(DATASET_KEYWORD_GEOJSON_1) TO FME_GENERIC ::polygon_rundt_vega ALIAS_GEOMETRY    MERGE_INPUT Yes   OUTPUT ROUTED FEATURE_TYPE *
+GEOJSON_1_MERGE_DEF GEOJSON_1::polygon_rundt_vega GLOB *
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory    FACTORY_NAME "polygon_rundt_vega_GEOJSON_1 Splitter"    INPUT FEATURE_TYPE polygon_rundt_vega    OUTPUT FEATURE_TYPE polygon_rundt_vega_GEOJSON_1
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+# -------------------------------------------------------------------------
+Tcl2 proc PROJReprojector_2_CoordSysRemover {} {    global FME_CoordSys;    set FME_CoordSys {}; }
+MACRO PROJReprojector_2_REMOVE_CS
+# Only remove the feature coordinate system if a source coordinate system was manually chosen.
+INCLUDE [    if { {} != {} } {       puts {MACRO PROJReprojector_2_REMOVE_CS @Tcl2(PROJReprojector_2_CoordSysRemover)};    }; ]
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { PROJReprojector_2 }    INPUT  FEATURE_TYPE polygon_rundt_vega_GEOJSON_1    OUTPUT { FEATURE_TYPE PROJReprojector_2_REPROJECTED         $(PROJReprojector_2_REMOVE_CS)         @Reproject(PROJREPROJECT,"","","","EPSG:4326","<Unused>","EPSG:4326","<Unused>",--,NearestNeighbor,PreserveCells,RASTER_TOLERANCE,0.0)          }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} GeometryExtractorFactory    FACTORY_NAME { GeometryExtractor_3 }    INPUT  FEATURE_TYPE PROJReprojector_2_REPROJECTED    GEOMETRY_ENCODING { wkt }    DEST_ATTR_NAME { "_geometry" }    REMOVE_GEOMETRY { No }    LEVELS_ATTR { <Unused> }    OGCVERSION { 1.2 }    OGC_WKT_PRECISION { FLOAT_64 }    JSON_MAX_DIGITS { <Unused> }    OMIT_NAMESPACES { <Unused> }    PREFER_POLYGON_OVER_SURFACE { <Unused> }    SRS_NAME { <Unused> }    SRS_AXIS_ORDER { <Unused> }    GENERATE_GEOMETRY_IDS { <Unused> }    GEOHASH_PRECISION { <Unused> }    OGEOSMS_URL_PREFIX { <Unused> }    ELLIPSOID_NAME { <Unused> }    LETTERING_TYPE { <Unused> }    PRECISION { "<Unused>" }    MSSQL_FORMAT { "<Unused>" }    ISO6709_FORMAT { "<Unused>" }    ISO6709_MAX_DECIMAL_PLACES { "<Unused>" }    OUTPUT { OUTPUT FEATURE_TYPE GeometryExtractor_3_OUTPUT        }    OUTPUT { <REJECTED> FEATURE_TYPE GeometryExtractor_3_<REJECTED>        }
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF * TeeFactory FACTORY_NAME GeometryExtractor_3_<Rejected> INPUT FEATURE_TYPE GeometryExtractor_3_<REJECTED>  OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED, GeometryExtractor_3<space>output<space>a<space><lt>Rejected<gt><space>feature.<space><space>To<space>continue<space>translation<space>when<space>features<space>are<space>rejected<comma><space>change<space><apos>Workspace<space>Parameters<apos><space><gt><space>Translation<space><gt><space><apos>Rejected<space>Feature<space>Handling<apos><space>to<space><apos>Continue<space>Translation<apos>)
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME { AttributeCreator_7 }    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE GeometryExtractor_3_OUTPUT    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    ATTR_ACTION { "" "delete" "SET_TO" "FME_CONDITIONAL:DEFAULT_VALUE'0'BOOL_OP;OR;COMPOSITE_TEST;1;CASE_INSENSITIVE_TEST $(delete_previous_grid$encode) CONTAINS 1'1'FME_NUM_CONDITIONS2___" }      ATTR_ACTION { "" "query" "SET_TO" "FME_SQL_DELIMITER<space><semicolon><lf>CREATE<space>TABLE<space>if<space>not<space>exists<space>geocode.tbl_geocode_object<lf><openparen><lf><space><space><space><space>id<space>character<space>varying<openparen>20<closeparen><comma><lf><space><space><space><space>area_reference<space>character<space>varying<openparen>50<closeparen><comma><lf><space><space><space><space>level_qdgc<space>integer<comma><lf><space><space><space><space>cellsize_degrees<space>decimal<comma><lf><space><space><space><space>lon_center<space>decimal<comma><lf><space><space><space><space>lat_center<space>decimal<comma><lf><space><space><space><space>area_km2<space>decimal<comma><lf><space><space><space><space>geom<space>geometry<lf><closeparen><semicolon><lf>SELECT<space>*<space>FROM<space>qdgc_fillqdgc_rs<openparen><apos>Norge<apos><comma>6<comma>0<comma><apos>geocode<apos><comma>ST_PolygonFromText<openparen><apos><at>Value<openparen>_geometry<closeparen><apos><comma>4326<closeparen><closeparen><semicolon>" }    OUTPUT { OUTPUT FEATURE_TYPE AttributeCreator_7_OUTPUT        }
+# -------------------------------------------------------------------------
+MACRO SQLExecutor_3_DIRECTIVES READ_TIME_WITH_TIMEZONE Yes QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS Yes CREATE_FEATURE_TABLES_FROM_DATA Yes NAMED_CONNECTION MESA<space>3.0
+FACTORY_DEF {*} QueryFactory    FACTORY_NAME { SQLExecutor_3 }    INPUT  FEATURE_TYPE AttributeCreator_7_OUTPUT    QUERY_SQL            { "@EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>query<closeparen>,SQLExecutor_3)" }    READER_TYPE          { POSTGRES }    READER_DATASET       { "Mesa<space>3.0<space>-<space>romslo" }    COMBINE_ATTRIBUTES   { RESULT_ONLY }    IGNORE_NULLS         { <Unused> }    COMBINE_GEOMETRY     { QUERY_ONLY }    QUERYFCT_OUTPUT      { "BASED_ON_CONNECTIONS" }    CONTINUE_ON_READER_ERROR YES    QUERYFCT_PROPAGATE_IDS_ON_SQL_EXECUTE YES    READER_PARAMS        { $(SQLExecutor_3_DIRECTIVES) }    OUTPUT { READER_ERROR FEATURE_TYPE SQLExecutor_3_<REJECTED>         }
+DEFAULT_MACRO _WB_BYPASS_TERMINATION No
+FACTORY_DEF * TeeFactory FACTORY_NAME SQLExecutor_3_<Rejected> INPUT FEATURE_TYPE SQLExecutor_3_<REJECTED>  OUTPUT FAILED FEATURE_TYPE * @Abort(ENCODED, SQLExecutor_3<space>output<space>a<space><lt>Rejected<gt><space>feature.<space><space>To<space>continue<space>translation<space>when<space>features<space>are<space>rejected<comma><space>change<space><apos>Workspace<space>Parameters<apos><space><gt><space>Translation<space><gt><space><apos>Rejected<space>Feature<space>Handling<apos><space>to<space><apos>Continue<space>Translation<apos>)
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * RoutingFactory FACTORY_NAME "Destination Feature Type Routing Correlator"   COMMAND_PARM_EVALUATION SINGLE_PASS   INPUT FEATURE_TYPE *   FEATURE_TYPE_ATTRIBUTE __wb_out_feat_type__   OUTPUT ROUTED FEATURE_TYPE *    OUTPUT NOT_ROUTED FEATURE_TYPE __nuke_me__ @Tcl2("FME_StatMessage 818059 [FME_GetAttribute fme_template_feature_type] 818060 818061 fme_warn")
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory   FACTORY_NAME "Final Output Nuker"   INPUT FEATURE_TYPE __nuke_me__
+

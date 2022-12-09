@@ -1,0 +1,758 @@
+#! <?xml version="1.0" encoding="UTF-8" ?>
+#! <WORKSPACE
+#    Command line to run this workspace:
+#        "C:\Program Files\FME 2022.0.1.1\fme.exe" "C:\Users\romslo\Norkart AS\MESA 3.0 - sensitivity atlas - General\Workspacer_gjeldende\sensitivityAtlas_project_cleanup.fmw"
+#          --FME_LAUNCH_VIEWER_APP "YES"
+#    
+#!   A0_PREVIEW_IMAGE="data:image/png;base64,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"
+#!   ARCGIS_COMPATIBILITY="ARCGIS_AUTO"
+#!   ATTR_TYPE_ENCODING="SDF"
+#!   BEGIN_PYTHON=""
+#!   BEGIN_TCL=""
+#!   CATEGORY=""
+#!   DESCRIPTION=""
+#!   DESTINATION="NONE"
+#!   DESTINATION_ROUTING_FILE=""
+#!   DOC_EXTENTS="5700.18 1090.76"
+#!   DOC_TOP_LEFT="1017.39 -1574.14"
+#!   END_PYTHON=""
+#!   END_TCL=""
+#!   EXPLICIT_BOOKMARK_ORDER="false"
+#!   FME_BUILD_NUM="22350"
+#!   FME_BULK_MODE_THRESHOLD="2000"
+#!   FME_DOCUMENT_GUID="3ed32b36-2c30-4293-8cb1-4ab5495ccde5"
+#!   FME_DOCUMENT_PRIORGUID=""
+#!   FME_GEOMETRY_HANDLING="Enhanced"
+#!   FME_IMPLICIT_CSMAP_REPROJECTION_MODE="Auto"
+#!   FME_NAMES_ENCODING="windows-1252"
+#!   FME_REPROJECTION_ENGINE="FME"
+#!   FME_SERVER_SERVICES=""
+#!   FME_STROKE_MAX_DEVIATION="0"
+#!   HISTORY=""
+#!   IGNORE_READER_FAILURE="No"
+#!   LAST_SAVE_BUILD="FME(R) 2022.0.1.1 (20220617 - Build 22350 - WIN64)"
+#!   LAST_SAVE_DATE="2022-10-28T12:14:06"
+#!   LOG_FILE=""
+#!   LOG_MAX_RECORDED_FEATURES="200"
+#!   MARKDOWN_DESCRIPTION=""
+#!   MARKDOWN_USAGE=""
+#!   MAX_LOG_FEATURES="200"
+#!   MULTI_WRITER_DATASET_ORDER="BY_ID"
+#!   PASSWORD=""
+#!   PYTHON_COMPATIBILITY="38"
+#!   REDIRECT_TERMINATORS="NONE"
+#!   SAVE_ON_PROMPT_AND_RUN="Yes"
+#!   SHOW_ANNOTATIONS="true"
+#!   SHOW_INFO_NODES="true"
+#!   SOURCE="NONE"
+#!   SOURCE_ROUTING_FILE=""
+#!   TERMINATE_REJECTED="NO"
+#!   TITLE=""
+#!   USAGE=""
+#!   USE_MARKDOWN=""
+#!   VIEW_POSITION="78.1258 0"
+#!   WARN_INVALID_XFORM_PARAM="Yes"
+#!   WORKSPACE_VERSION="1"
+#!   ZOOM_SCALE="100"
+#! >
+#! <DATASETS>
+#! </DATASETS>
+#! <DATA_TYPES>
+#! </DATA_TYPES>
+#! <GEOM_TYPES>
+#! </GEOM_TYPES>
+#! <FEATURE_TYPES>
+#! </FEATURE_TYPES>
+#! <FMESERVER>
+#! <CONNECTIONS>
+#! <CONNECTION
+#!   NAME="MESA 3.0"
+#!   TYPE="DATABASE"
+#!   FAMILY="PostgreSQL"
+#!   USAGE="INTERNAL"
+#! />
+#! </CONNECTIONS>
+#! </FMESERVER>
+#! <GLOBAL_PARAMETERS>
+#! </GLOBAL_PARAMETERS>
+#! <USER_PARAMETERS
+#!   FORM="eyJwYXJhbWV0ZXJzIjpbXX0="
+#! >
+#! <PARAMETER_INFO>
+#! </PARAMETER_INFO>
+#! </USER_PARAMETERS>
+#! <COMMENTS>
+#! <COMMENT
+#!   IDENTIFIER="2"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Get all active database schemas&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="1017.4087178371785 -665.25693756937585"
+#!   TOP_LEFT="1017.4087178371785 -665.25693756937585"
+#!   BOTTOM_RIGHT="1489.4087178371785 -666.25693756937585"
+#!   BOUNDING_RECT="1017.4087178371785 -665.25693756937585 472 1"
+#!   ORDER="500000000000610.25"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.28627450980392155,0.29803921568627451,0.0078431372549019607,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="4"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="6"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Older than timelimit ?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="5446.9294692946933 -583.3817188171879"
+#!   TOP_LEFT="5446.9294692946933 -583.3817188171879"
+#!   BOTTOM_RIGHT="5900.9294692946933 -584.3817188171879"
+#!   BOUNDING_RECT="5446.9294692946933 -583.3817188171879 454 1"
+#!   ORDER="500000000000612.25"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.28627450980392155,0.29803921568627451,0.0078431372549019607,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="3"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="13"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Timelimit for project in days - SET IT HERE&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="3869.819758197581 -483.38071880718758"
+#!   TOP_LEFT="3869.819758197581 -483.38071880718758"
+#!   BOTTOM_RIGHT="4323.819758197581 -484.38071880718758"
+#!   BOUNDING_RECT="3869.819758197581 -483.38071880718758 454 1"
+#!   ORDER="500000000000615.25"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="true"
+#!   COLOUR="0,0.66666666666666663,0,0.40392156862745099"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="10"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="17"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;check tbl_project database&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="1017.3855938559386 -1307.1383377528537"
+#!   TOP_LEFT="1017.3855938559386 -1307.1383377528537"
+#!   BOTTOM_RIGHT="1489.3855938559386 -1308.1383377528537"
+#!   BOUNDING_RECT="1017.3855938559386 -1307.1383377528537 472 1"
+#!   ORDER="500000000000610.25"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.28627450980392155,0.29803921568627451,0.0078431372549019607,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="16"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="21"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Some schemas are not to be touched!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="1610.1564415644166 -721.25731257312577"
+#!   TOP_LEFT="1610.1564415644166 -721.25731257312577"
+#!   BOTTOM_RIGHT="2064.1564415644166 -722.25731257312577"
+#!   BOUNDING_RECT="1610.1564415644166 -721.25731257312577 454 1"
+#!   ORDER="500000000000619.25"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.28627450980392155,0.29803921568627451,0.0078431372549019607,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="18"
+#! />
+#! <COMMENT
+#!   IDENTIFIER="24"
+#!   COMMENT_VALUE="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#10;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#10;p, li { white-space: pre-wrap; }&#10;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;&#10;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Get only active projects&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"
+#!   POSITION="3028.1552815528148 -721.25731257312577"
+#!   TOP_LEFT="3028.1552815528148 -721.25731257312577"
+#!   BOTTOM_RIGHT="3511.1552815528148 -722.25731257312577"
+#!   BOUNDING_RECT="3028.1552815528148 -721.25731257312577 483 1"
+#!   ORDER="500000000000622.25"
+#!   FOLLOW_ANCHOR="true"
+#!   INFO_NODE="false"
+#!   CUSTOM_USER_COLOR="false"
+#!   COLOUR="0.28627450980392155,0.29803921568627451,0.0078431372549019607,0.78431372549019607"
+#!   SIZE_POLICY="10"
+#!   ANCHORED_NODE="22"
+#! />
+#! </COMMENTS>
+#! <CONSTANTS>
+#! </CONSTANTS>
+#! <BOOKMARKS>
+#! <BOOKMARK
+#!   IDENTIFIER="14"
+#!   NAME="Calculate Time parameters"
+#!   DESCRIPTION=""
+#!   TOP_LEFT="4707.8600786007864 -745.00800008000078"
+#!   ORDER="500000000000616.25"
+#!   PALETTE_COLOR="Color1"
+#!   BOTTOM_RIGHT="5299.8600786007864 -1021.0080000800008"
+#!   BOUNDING_RECT="4707.8600786007864 -745.00800008000078 592 276"
+#!   STICKY="true"
+#!   COLOUR="0.20784313725490197,0.40784313725490196,0.40784313725490196,1"
+#!   CONTENTS="7 "
+#! >
+#! </BOOKMARK>
+#! </BOOKMARKS>
+#! <TRANSFORMERS>
+#! <TRANSFORMER
+#!   IDENTIFIER="4"
+#!   TYPE="SQLCreator"
+#!   VERSION="3"
+#!   POSITION="1059.3855938559386 -898.75843758437588"
+#!   BOUNDING_RECT="1059.3855938559386 -898.75843758437588 430 71"
+#!   ORDER="500000000000609.25"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="22350"
+#! >
+#!     <OUTPUT_FEAT NAME="&lt;SCHEMA&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="fme_feature_type_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attribute{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attribute{}.fme_data_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attribute{}.native_data_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_basename" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="RESULT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="nspname" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="_reader_error" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="nspname" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_TYPES" PARM_VALUE="buffer"/>
+#!     <XFORM_PARM PARM_NAME="COORDSYS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="DATASET" PARM_VALUE="MESA&lt;space&gt;3.0"/>
+#!     <XFORM_PARM PARM_NAME="DB_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="DYNGROUP_0" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="EXPOSED_ATTRIBUTE_LIST" PARM_VALUE="nspname"/>
+#!     <XFORM_PARM PARM_NAME="FEATURETYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="FORMAT" PARM_VALUE="POSTGRES"/>
+#!     <XFORM_PARM PARM_NAME="FORMAT_ATTRIBUTE_TYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="FORMAT_PARAMS" PARM_VALUE="POSTGRES_CREATE_FEATURE_TABLES_FROM_DATA,&quot;IGNORE TEXT&quot;,POSTGRES&lt;space&gt;,POSTGRES_SCHEMAS_FOR_TABLE_LISTING,&quot;IGNORE TEXT&quot;,POSTGRES&lt;space&gt;Schemas&lt;space&gt;for&lt;space&gt;Tables:,POSTGRES_NAMED_CONNECTION,&quot;IGNORE TEXT&quot;,POSTGRES&lt;space&gt;Connection:,POSTGRES_READ_TIME_WITH_TIMEZONE,&quot;IGNORE TEXT&quot;,POSTGRES&lt;space&gt;,POSTGRES_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS,&quot;IGNORE TEXT&quot;,POSTGRES&lt;space&gt;"/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_FEATURES_DISPLAY" PARM_VALUE="Schema and Data Features"/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_FEATURES_GROUP" PARM_VALUE="FME_DISCLOSURE_CLOSED"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_CREATE_FEATURE_TABLES_FROM_DATA" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_NAMED_CONNECTION" PARM_VALUE="MESA&lt;space&gt;3.0"/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_READ_TIME_WITH_TIMEZONE" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_SCHEMAS_FOR_TABLE_LISTING" PARM_VALUE="system"/>
+#!     <XFORM_PARM PARM_NAME="SQL_STATEMENT" PARM_VALUE="FME_SQL_DELIMITER&lt;space&gt;&lt;semicolon&gt;&lt;lf&gt;&lt;space&gt;SELECT&lt;space&gt;nspname&lt;lf&gt;&lt;space&gt;FROM&lt;space&gt;pg_catalog.pg_namespace&lt;semicolon&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="SQLCreator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="3"
+#!   TYPE="TestFilter"
+#!   VERSION="2"
+#!   POSITION="5446.9294692946933 -795.00800008000078"
+#!   BOUNDING_RECT="5446.9294692946933 -795.00800008000078 637.50637506375097 71"
+#!   ORDER="500000000000611.25"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="22350"
+#! >
+#!     <OUTPUT_FEAT NAME="Project&lt;space&gt;to&lt;space&gt;keep"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="timeNOW" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="age" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="limitSeconds" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="limitDAYS" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="last_write" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="Projects&lt;space&gt;to&lt;space&gt;delete"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="timeNOW" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="age" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="limitSeconds" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="limitDAYS" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="last_write" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="DEFAULT_VALUE" PARM_VALUE="Projects&lt;space&gt;to&lt;space&gt;delete"/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="Per Output Port"/>
+#!     <XFORM_PARM PARM_NAME="TESTLISTGRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_LIST" PARM_VALUE="&quot;BOOL_OP,AND,COMPOSITE_TEST,&quot;&quot;&quot;&quot;&quot;&quot;1 AND 2&quot;&quot;&quot;&quot;&quot;&quot;,TEST_CLAUSE,TEST&lt;space&gt;age&lt;space&gt;ATTRIBUTE_HAS_A_VALUE&lt;space&gt;&lt;quote&gt;&lt;quote&gt;&lt;lf&gt;TEST&lt;space&gt;&lt;lt&gt;at&lt;gt&gt;Value&lt;lt&gt;openparen&lt;gt&gt;age&lt;lt&gt;closeparen&lt;gt&gt;&lt;space&gt;&lt;lt&gt;=&lt;space&gt;&lt;lt&gt;at&lt;gt&gt;Value&lt;lt&gt;openparen&lt;gt&gt;limitSeconds&lt;lt&gt;closeparen&lt;gt&gt;&quot;,Project&lt;space&gt;to&lt;space&gt;keep"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="TestFilter"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="7"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="4795.8600786007864 -855.00800008000078"
+#!   BOUNDING_RECT="4795.8600786007864 -855.00800008000078 454 71"
+#!   ORDER="500000000000613.25"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="22350"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="timeNOW" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="age" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="limitSeconds" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="limitDAYS" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="last_write" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; timeNOW SET_TO &lt;at&gt;DateTimeNow&lt;openparen&gt;&lt;closeparen&gt;  age SET_TO &lt;at&gt;Evaluate&lt;openparen&gt;&lt;at&gt;Value&lt;openparen&gt;timeNOW&lt;closeparen&gt;-&lt;space&gt;&lt;at&gt;Value&lt;openparen&gt;last_write&lt;closeparen&gt;&lt;closeparen&gt;  limitSeconds SET_TO &lt;at&gt;Evaluate&lt;openparen&gt;&lt;at&gt;Value&lt;openparen&gt;limitDAYS&lt;closeparen&gt;*24*60*60&lt;closeparen&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="10"
+#!   TYPE="AttributeCreator"
+#!   VERSION="9"
+#!   POSITION="3770.3183831838319 -855.00800008000078"
+#!   BOUNDING_RECT="3770.3183831838319 -855.00800008000078 707.10000000000002 71"
+#!   ORDER="500000000000614.25"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="22350"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="limitDAYS" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="last_write" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_HANDLING" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="&quot;&quot; limitDAYS SET_TO 10"/>
+#!     <XFORM_PARM PARM_NAME="MULTI_FEATURE_MODE" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_MODE_DISPLAY" PARM_VALUE="No Substitution"/>
+#!     <XFORM_PARM PARM_NAME="NULL_ATTR_VALUE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_PRIOR_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="NUM_SUBSEQUENT_FEATURES" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeCreator_TIMELIMIT_DAYS"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="15"
+#!   TYPE="SQLExecutor"
+#!   VERSION="9"
+#!   POSITION="6287.5628756287551 -795.00800008000078"
+#!   BOUNDING_RECT="6287.5628756287551 -795.00800008000078 430 71"
+#!   ORDER="500000000000617.25"
+#!   PARMS_EDITED="true"
+#!   ENABLED="false"
+#!   LAST_PARM_EDIT="22350"
+#! >
+#!     <OUTPUT_FEAT NAME="&lt;SCHEMA&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="fme_feature_type_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attribute{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attribute{}.fme_data_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attribute{}.native_data_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_basename" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="RESULT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <OUTPUT_FEAT NAME="INITIATOR"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="timeNOW" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="age" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="limitSeconds" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="limitDAYS" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="last_write" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="_matched_records" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="3"/>
+#!     <XFORM_ATTR ATTR_NAME="timeNOW" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="age" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="limitSeconds" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="limitDAYS" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="last_write" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="_reader_error" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_TYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_IGNORE_NULLS" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="COMBINE_ATTRS" PARM_VALUE="Result Attributes Only"/>
+#!     <XFORM_PARM PARM_NAME="COMBINE_GEOM" PARM_VALUE="Initiator Geometry Only"/>
+#!     <XFORM_PARM PARM_NAME="COORDSYS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="DATASET" PARM_VALUE="MESA&lt;space&gt;3.0"/>
+#!     <XFORM_PARM PARM_NAME="DB_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="DYNGROUP_0" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="EXPOSED_ATTRIBUTE_LIST" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="FEATURETYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="FORMAT" PARM_VALUE="POSTGRES"/>
+#!     <XFORM_PARM PARM_NAME="FORMAT_ATTRIBUTE_TYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="FORMAT_PARAMS" PARM_VALUE="POSTGRES_CREATE_FEATURE_TABLES_FROM_DATA,&quot;IGNORE TEXT&quot;,POSTGRES&lt;space&gt;,POSTGRES_SCHEMAS_FOR_TABLE_LISTING,&quot;IGNORE TEXT&quot;,POSTGRES&lt;space&gt;Schemas&lt;space&gt;for&lt;space&gt;Tables:,POSTGRES_NAMED_CONNECTION,&quot;IGNORE TEXT&quot;,POSTGRES&lt;space&gt;Connection:,POSTGRES_READ_TIME_WITH_TIMEZONE,&quot;IGNORE TEXT&quot;,POSTGRES&lt;space&gt;,POSTGRES_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS,&quot;IGNORE TEXT&quot;,POSTGRES&lt;space&gt;"/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_FEATURES_DISPLAY" PARM_VALUE="Schema and Data Features"/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_FEATURES_GROUP" PARM_VALUE="FME_DISCLOSURE_CLOSED"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_CREATE_FEATURE_TABLES_FROM_DATA" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_NAMED_CONNECTION" PARM_VALUE="MESA&lt;space&gt;3.0"/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_READ_TIME_WITH_TIMEZONE" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_SCHEMAS_FOR_TABLE_LISTING" PARM_VALUE="system"/>
+#!     <XFORM_PARM PARM_NAME="SQL_STATEMENT" PARM_VALUE="FME_SQL_DELIMITER&lt;space&gt;&lt;semicolon&gt;&lt;lf&gt;DROP&lt;space&gt;SCHEMA&lt;space&gt;IF&lt;space&gt;EXISTS&lt;space&gt;&lt;at&gt;Value&lt;openparen&gt;name&lt;closeparen&gt;&lt;space&gt;CASCADE&lt;semicolon&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="SQLExecutor"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="16"
+#!   TYPE="SQLCreator"
+#!   VERSION="3"
+#!   POSITION="1059.3855938559386 -1503.1394627641039"
+#!   BOUNDING_RECT="1059.3855938559386 -1503.1394627641039 430 71"
+#!   ORDER="500000000000609.25"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="22350"
+#! >
+#!     <OUTPUT_FEAT NAME="&lt;SCHEMA&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="fme_feature_type_name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attribute{}.name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attribute{}.fme_data_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="attribute{}.native_data_type" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="fme_basename" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="RESULT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="last_write" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="_reader_error" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="last_write" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_TYPES" PARM_VALUE="buffer,buffer"/>
+#!     <XFORM_PARM PARM_NAME="COORDSYS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="DATASET" PARM_VALUE="MESA&lt;space&gt;3.0"/>
+#!     <XFORM_PARM PARM_NAME="DB_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="DYNGROUP_0" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="EXPOSED_ATTRIBUTE_LIST" PARM_VALUE="last_write,name"/>
+#!     <XFORM_PARM PARM_NAME="FEATURETYPES" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="FORMAT" PARM_VALUE="POSTGRES"/>
+#!     <XFORM_PARM PARM_NAME="FORMAT_ATTRIBUTE_TYPES" PARM_VALUE=","/>
+#!     <XFORM_PARM PARM_NAME="FORMAT_PARAMS" PARM_VALUE="POSTGRES_CREATE_FEATURE_TABLES_FROM_DATA,&quot;IGNORE TEXT&quot;,POSTGRES&lt;space&gt;,POSTGRES_SCHEMAS_FOR_TABLE_LISTING,&quot;IGNORE TEXT&quot;,POSTGRES&lt;space&gt;Schemas&lt;space&gt;for&lt;space&gt;Tables:,POSTGRES_NAMED_CONNECTION,&quot;IGNORE TEXT&quot;,POSTGRES&lt;space&gt;Connection:,POSTGRES_READ_TIME_WITH_TIMEZONE,&quot;IGNORE TEXT&quot;,POSTGRES&lt;space&gt;,POSTGRES_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS,&quot;IGNORE TEXT&quot;,POSTGRES&lt;space&gt;"/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_FEATURES_DISPLAY" PARM_VALUE="Schema and Data Features"/>
+#!     <XFORM_PARM PARM_NAME="OUTPUT_FEATURES_GROUP" PARM_VALUE="FME_DISCLOSURE_CLOSED"/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_CREATE_FEATURE_TABLES_FROM_DATA" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_NAMED_CONNECTION" PARM_VALUE="MESA&lt;space&gt;3.0"/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_READ_TIME_WITH_TIMEZONE" PARM_VALUE="Yes"/>
+#!     <XFORM_PARM PARM_NAME="POSTGRES_SCHEMAS_FOR_TABLE_LISTING" PARM_VALUE="system"/>
+#!     <XFORM_PARM PARM_NAME="SQL_STATEMENT" PARM_VALUE="FME_SQL_DELIMITER&lt;space&gt;&lt;semicolon&gt;&lt;lf&gt;SELECT&lt;space&gt;name&lt;comma&gt;&lt;space&gt;last_write&lt;space&gt;FROM&lt;space&gt;system.tbl_project&lt;semicolon&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="SQLCreator_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="18"
+#!   TYPE="TestFilter"
+#!   VERSION="2"
+#!   POSITION="1648.1564415644166 -898.75843758437588"
+#!   BOUNDING_RECT="1648.1564415644166 -898.75843758437588 676.86680866808592 71"
+#!   ORDER="500000000000618.25"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="22350"
+#! >
+#!     <OUTPUT_FEAT NAME="Do&lt;space&gt;not&lt;space&gt;delete&lt;space&gt;these&lt;space&gt;schemas"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="nspname" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="consider&lt;space&gt;deleting"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="nspname" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="DEFAULT_VALUE" PARM_VALUE="consider&lt;space&gt;deleting"/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="Per Output Port"/>
+#!     <XFORM_PARM PARM_NAME="TESTLISTGRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="TEST_LIST" PARM_VALUE="&quot;BOOL_OP,OR,COMPOSITE_TEST,&quot;&quot;&quot;&quot;&quot;&quot;1 OR 2 OR 3 OR 4 OR 5 OR 6&quot;&quot;&quot;&quot;&quot;&quot;,TEST_CLAUSE,TEST&lt;space&gt;&lt;lt&gt;at&lt;gt&gt;Value&lt;lt&gt;openparen&lt;gt&gt;nspname&lt;lt&gt;closeparen&lt;gt&gt;&lt;space&gt;=&lt;space&gt;pg_toast&lt;lf&gt;TEST&lt;space&gt;&lt;lt&gt;at&lt;gt&gt;Value&lt;lt&gt;openparen&lt;gt&gt;nspname&lt;lt&gt;closeparen&lt;gt&gt;&lt;space&gt;=&lt;space&gt;pg_catalog&lt;lf&gt;TEST&lt;space&gt;&lt;lt&gt;at&lt;gt&gt;Value&lt;lt&gt;openparen&lt;gt&gt;nspname&lt;lt&gt;closeparen&lt;gt&gt;&lt;space&gt;=&lt;space&gt;public&lt;lf&gt;TEST&lt;space&gt;&lt;lt&gt;at&lt;gt&gt;Value&lt;lt&gt;openparen&lt;gt&gt;nspname&lt;lt&gt;closeparen&lt;gt&gt;&lt;space&gt;=&lt;space&gt;information_schema&lt;lf&gt;TEST&lt;space&gt;&lt;lt&gt;at&lt;gt&gt;Value&lt;lt&gt;openparen&lt;gt&gt;nspname&lt;lt&gt;closeparen&lt;gt&gt;&lt;space&gt;=&lt;space&gt;geocode&lt;lf&gt;TEST&lt;space&gt;&lt;lt&gt;at&lt;gt&gt;Value&lt;lt&gt;openparen&lt;gt&gt;nspname&lt;lt&gt;closeparen&lt;gt&gt;&lt;space&gt;=&lt;space&gt;system&quot;,Do&lt;space&gt;not&lt;space&gt;delete&lt;space&gt;these&lt;space&gt;schemas"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="TestFilter_2"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="22"
+#!   TYPE="FeatureMerger"
+#!   VERSION="20"
+#!   POSITION="3028.1552815528148 -855.00800008000078"
+#!   BOUNDING_RECT="3028.1552815528148 -855.00800008000078 483 71"
+#!   ORDER="500000000000621.25"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="22350"
+#! >
+#!     <OUTPUT_FEAT NAME="MERGED"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_ATTR ATTR_NAME="last_write" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <OUTPUT_FEAT NAME="UNMERGED_REQUESTOR"/>
+#!     <FEAT_COLLAPSED COLLAPSED="1"/>
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="1" />
+#!     <OUTPUT_FEAT NAME="USED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="2"/>
+#!     <XFORM_ATTR ATTR_NAME="last_write" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <XFORM_ATTR ATTR_NAME="numReferences" IS_USER_CREATED="false" FEAT_INDEX="2" />
+#!     <OUTPUT_FEAT NAME="UNUSED_SUPPLIER"/>
+#!     <FEAT_COLLAPSED COLLAPSED="3"/>
+#!     <XFORM_ATTR ATTR_NAME="last_write" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="3" />
+#!     <OUTPUT_FEAT NAME="&lt;REJECTED&gt;"/>
+#!     <FEAT_COLLAPSED COLLAPSED="4"/>
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="last_write" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_ATTR ATTR_NAME="fme_rejection_code" IS_USER_CREATED="false" FEAT_INDEX="4" />
+#!     <XFORM_PARM PARM_NAME="ADVANCED_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_GROUP" PARM_VALUE="FME_DISCLOSURE_OPEN"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_ACCUM_MODE" PARM_VALUE="Merge Supplier"/>
+#!     <XFORM_PARM PARM_NAME="ATTR_CONFLICT_RES" PARM_VALUE="Use Supplier"/>
+#!     <XFORM_PARM PARM_NAME="CLEANING_TOLERANCE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="CONNECT_Z_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GENERATE_LIST_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="GEOM_TYPE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_BY_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="GROUP_PROCESSING_GROUP" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="IGNORE_NULLS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="JOIN_ATTRIBUTES_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="JOIN_KEYS" PARM_VALUE="&lt;at&gt;Value&lt;openparen&gt;name&lt;closeparen&gt; &lt;at&gt;Value&lt;openparen&gt;name&lt;closeparen&gt; STRING"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_ATTRS_TO_INCLUDE_MODE" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="LIST_NAME" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_COUNT_ATTR" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="MERGE_TYPE" PARM_VALUE="Attributes Only"/>
+#!     <XFORM_PARM PARM_NAME="MODE_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PARAMETERS" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="PRESERVE_FEATURE_ORDER" PARM_VALUE="Per Output Port"/>
+#!     <XFORM_PARM PARM_NAME="PROCESS_DUPS" PARM_VALUE="NO"/>
+#!     <XFORM_PARM PARM_NAME="REJECT_NULL_MISSING_KEYS" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIERS_FIRST" PARM_VALUE="No"/>
+#!     <XFORM_PARM PARM_NAME="SUPPLIER_PREFIX" PARM_VALUE="&lt;Unused&gt;"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="FeatureMerger"/>
+#! </TRANSFORMER>
+#! <TRANSFORMER
+#!   IDENTIFIER="26"
+#!   TYPE="AttributeRenamer"
+#!   VERSION="5"
+#!   POSITION="2482.4069240692415 -898.75843758437588"
+#!   BOUNDING_RECT="2482.4069240692415 -898.75843758437588 454 71"
+#!   ORDER="500000000000623.25"
+#!   PARMS_EDITED="true"
+#!   ENABLED="true"
+#!   LAST_PARM_EDIT="22350"
+#! >
+#!     <OUTPUT_FEAT NAME="OUTPUT"/>
+#!     <FEAT_COLLAPSED COLLAPSED="0"/>
+#!     <XFORM_ATTR ATTR_NAME="name" IS_USER_CREATED="false" FEAT_INDEX="0" />
+#!     <XFORM_PARM PARM_NAME="ATTRIBUTE_GRP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="ATTR_TABLE" PARM_VALUE="nspname name RENAME_SET_DEFAULT "/>
+#!     <XFORM_PARM PARM_NAME="MISSING_INPUT_ATTRS" PARM_VALUE="REMOVE"/>
+#!     <XFORM_PARM PARM_NAME="TRANSFORMER_GROUP" PARM_VALUE=""/>
+#!     <XFORM_PARM PARM_NAME="XFORMER_NAME" PARM_VALUE="AttributeRenamer"/>
+#! </TRANSFORMER>
+#! </TRANSFORMERS>
+#! <FEAT_LINKS>
+#! <FEAT_LINK
+#!   IDENTIFIER="29"
+#!   SOURCE_NODE="3"
+#!   TARGET_NODE="15"
+#!   SOURCE_PORT_DESC="fo 1 Projects&lt;lt&gt;space&lt;gt&gt;to&lt;lt&gt;space&lt;gt&gt;delete"
+#!   TARGET_PORT_DESC="fi 0 INITIATOR"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="19"
+#!   SOURCE_NODE="4"
+#!   TARGET_NODE="18"
+#!   SOURCE_PORT_DESC="fo 1 RESULT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="9"
+#!   SOURCE_NODE="7"
+#!   TARGET_NODE="3"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="12"
+#!   SOURCE_NODE="10"
+#!   TARGET_NODE="7"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="23"
+#!   SOURCE_NODE="16"
+#!   TARGET_NODE="22"
+#!   SOURCE_PORT_DESC="fo 1 RESULT"
+#!   TARGET_PORT_DESC="fi 1 SUPPLIER"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="27"
+#!   SOURCE_NODE="18"
+#!   TARGET_NODE="26"
+#!   SOURCE_PORT_DESC="fo 1 consider&lt;lt&gt;space&lt;gt&gt;deleting"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="25"
+#!   SOURCE_NODE="22"
+#!   TARGET_NODE="10"
+#!   SOURCE_PORT_DESC="fo 0 MERGED"
+#!   TARGET_PORT_DESC="fi 0 "
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! <FEAT_LINK
+#!   IDENTIFIER="28"
+#!   SOURCE_NODE="26"
+#!   TARGET_NODE="22"
+#!   SOURCE_PORT_DESC="fo 0 OUTPUT"
+#!   TARGET_PORT_DESC="fi 0 REQUESTOR"
+#!   ENABLED="true"
+#!   EXECUTION_IDX="0"
+#!   HIDDEN="false"
+#!   COLOUR="0.82352941176470584,0.82352941176470584,0.82352941176470584,1"
+#!   PEN_WIDTH="4"
+#!   PEN_STYLE="1"
+#!   LINK_STYLE_NAME="&lt;Default&gt;"
+#!   EXTRA_POINTS=""
+#! />
+#! </FEAT_LINKS>
+#! <BREAKPOINTS>
+#! </BREAKPOINTS>
+#! <ATTR_LINKS>
+#! </ATTR_LINKS>
+#! <SUBDOCUMENTS>
+#! </SUBDOCUMENTS>
+#! <LOOKUP_TABLES>
+#! </LOOKUP_TABLES>
+#! </WORKSPACE>
+
+FME_PYTHON_VERSION 38
+ARCGIS_COMPATIBILITY ARCGIS_AUTO
+#! START_HEADER
+#! START_WB_HEADER
+READER_TYPE MULTI_READER
+WRITER_TYPE NULL
+WRITER_KEYWORD NULL_DEST
+NULL_DEST_DATASET null
+#! END_WB_HEADER
+#! START_WB_HEADER
+#! END_WB_HEADER
+#! END_HEADER
+
+LOG_FILENAME "$(FME_MF_DIR)sensitivityAtlas_project_cleanup.log"
+LOG_APPEND NO
+LOG_FILTER_MASK -1
+LOG_MAX_FEATURES 200
+LOG_MAX_RECORDED_FEATURES 200
+FME_REPROJECTION_ENGINE FME
+FME_IMPLICIT_CSMAP_REPROJECTION_MODE Auto
+FME_GEOMETRY_HANDLING Enhanced
+FME_STROKE_MAX_DEVIATION 0
+FME_NAMES_ENCODING windows-1252
+FME_BULK_MODE_THRESHOLD 2000
+LAST_SAVE_BUILD "FME 2022.0.1.1 (20220617 - Build 22350 - WIN64)"
+# -------------------------------------------------------------------------
+
+MULTI_READER_CONTINUE_ON_READER_FAILURE No
+
+# -------------------------------------------------------------------------
+
+MACRO WORKSPACE_NAME sensitivityAtlas_project_cleanup
+MACRO FME_VIEWER_APP fmedatainspector
+DEFAULT_MACRO WB_CURRENT_CONTEXT
+# -------------------------------------------------------------------------
+MACRO SQLCreator_DIRECTIVES CREATE_FEATURE_TABLES_FROM_DATA Yes SCHEMAS_FOR_TABLE_LISTING system NAMED_CONNECTION MESA<space>3.0 READ_TIME_WITH_TIMEZONE Yes QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS Yes
+FACTORY_DEF {*} CreationFactory    FACTORY_NAME { SQLCreator_Creator }    OUTPUT { FEATURE_TYPE _____CREATED______ }
+FACTORY_DEF {*} QueryFactory    FACTORY_NAME { SQLCreator }    INPUT FEATURE_TYPE _____CREATED______    QUERY_SQL            { FME_SQL_DELIMITER<space><semicolon><lf><space>SELECT<space>nspname<lf><space>FROM<space>pg_catalog.pg_namespace<semicolon> }    COMBINE_ATTRIBUTES   RESULT_ONLY    COMBINE_GEOMETRY     RESULT_ONLY    READER_TYPE          { POSTGRES   }    READER_DATASET       { "MESA<space>3.0" }    READER_PARAMS        { $(SQLCreator_DIRECTIVES) }    QUERYFCT_OUTPUT      { "BASED_ON_CONNECTIONS" }    QUERYFCT_PROPAGATE_IDS_ON_SQL_EXECUTE YES    CONTINUE_ON_READER_ERROR YES    OUTPUT { RESULT FEATURE_TYPE SQLCreator_RESULT        @SupplyAttributes(fme_feature_type,SQLCreator)         }
+FACTORY_DEF * BranchingFactory   FACTORY_NAME "SQLCreator_RESULT Brancher -1 19"   INPUT FEATURE_TYPE SQLCreator_RESULT   TARGET_FACTORY "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   MAXIMUM_COUNT None   OUTPUT PASSED FEATURE_TYPE *
+# -------------------------------------------------------------------------
+MACRO SQLCreator_2_DIRECTIVES CREATE_FEATURE_TABLES_FROM_DATA Yes SCHEMAS_FOR_TABLE_LISTING system NAMED_CONNECTION MESA<space>3.0 READ_TIME_WITH_TIMEZONE Yes QUERY_FEATURE_TYPES_FOR_MERGE_FILTERS Yes
+FACTORY_DEF {*} CreationFactory    FACTORY_NAME { SQLCreator_2_Creator }    OUTPUT { FEATURE_TYPE _____CREATED______ }
+FACTORY_DEF {*} QueryFactory    FACTORY_NAME { SQLCreator_2 }    INPUT FEATURE_TYPE _____CREATED______    QUERY_SQL            { FME_SQL_DELIMITER<space><semicolon><lf>SELECT<space>name<comma><space>last_write<space>FROM<space>system.tbl_project<semicolon> }    COMBINE_ATTRIBUTES   RESULT_ONLY    COMBINE_GEOMETRY     RESULT_ONLY    READER_TYPE          { POSTGRES   }    READER_DATASET       { "MESA<space>3.0" }    READER_PARAMS        { $(SQLCreator_2_DIRECTIVES) }    QUERYFCT_OUTPUT      { "BASED_ON_CONNECTIONS" }    QUERYFCT_PROPAGATE_IDS_ON_SQL_EXECUTE YES    CONTINUE_ON_READER_ERROR YES    OUTPUT { RESULT FEATURE_TYPE SQLCreator_2_RESULT        @SupplyAttributes(fme_feature_type,SQLCreator_2)         }
+FACTORY_DEF * BranchingFactory   FACTORY_NAME "SQLCreator_2_RESULT Brancher -1 23"   INPUT FEATURE_TYPE SQLCreator_2_RESULT   TARGET_FACTORY "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   MAXIMUM_COUNT None   OUTPUT PASSED FEATURE_TYPE *
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "$(WB_CURRENT_CONTEXT)_CREATOR_BRANCH_TARGET"   INPUT FEATURE_TYPE *  OUTPUT FEATURE_TYPE *
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { TestFilter_2 }    INPUT  FEATURE_TYPE SQLCreator_RESULT    OUTPUT FEATURE_TYPE TestFilter_2_TESTFILTERINPUTLINE_0
+FACTORY_DEF {*} TestFactory FACTORY_NAME TestFilter_2_Condition_1 INPUT FEATURE_TYPE TestFilter_2_TESTFILTERINPUTLINE_0 TEST { @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>nspname<closeparen>,TestFilter_2) = pg_toast ENCODED } TEST { @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>nspname<closeparen>,TestFilter_2) = pg_catalog ENCODED } TEST { @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>nspname<closeparen>,TestFilter_2) = public ENCODED } TEST { @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>nspname<closeparen>,TestFilter_2) = information_schema ENCODED } TEST { @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>nspname<closeparen>,TestFilter_2) = geocode ENCODED } TEST { @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>nspname<closeparen>,TestFilter_2) = system ENCODED } BOOLEAN_OPERATOR OR COMPOSITE_TEST_EXPR "1 OR 2 OR 3 OR 4 OR 5 OR 6" FEATURE_TABLE_SHIM_SUPPORT Yes PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT OUTPUT PASSED FEATURE_TYPE TestFilter_2_Do<space>not<space>delete<space>these<space>schemas OUTPUT FAILED FEATURE_TYPE TestFilter_2_TESTFILTERINPUTLINE_1
+FACTORY_DEF * TeeFactory FACTORY_NAME TestFilter_2_consider<space>deleting INPUT FEATURE_TYPE TestFilter_2_TESTFILTERINPUTLINE_1 OUTPUT FEATURE_TYPE TestFilter_2_consider<space>deleting
+FACTORY_DEF * TeeFactory   FACTORY_NAME "TestFilter_2 Do<space>not<space>delete<space>these<space>schemas Transformer Output Nuker"   INPUT FEATURE_TYPE TestFilter_2_Do<space>not<space>delete<space>these<space>schemas
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    COMMAND_PARM_EVALUATION SINGLE_PASS    FACTORY_NAME { AttributeRenamer }    INPUT  FEATURE_TYPE TestFilter_2_consider<space>deleting 	ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    MISSING_INPUT_ATTR_HANDLING RENAME_SET_DEFAULT REMOVE 	ATTR_ACTION { "nspname" "name" "RENAME_SET_DEFAULT" "" }    OUTPUT { OUTPUT FEATURE_TYPE AttributeRenamer_OUTPUT        }
+# -------------------------------------------------------------------------
+INCLUDE [if { {ATTRIBUTES} == {ATTRIBUTES} } {                puts "MACRO FeatureMerger_REFERENCE_INFO ATTRIBUTES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {POLYGONS}} {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {AGGREGATES}} {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {POLYGONS}} {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_POLYS";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {AGGREGATES}} {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} && {<Unused>} == {LINESFROMPOINTS}} {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_LINES_FROM_POINTS";             }          elseif { {ATTRIBUTES} == {GEOM_BUILD} } {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_BUILD_AGGREGATES";             }          elseif { {ATTRIBUTES} == {GEOM_AND_ATTRS} } {                puts "MACRO FeatureMerger_REFERENCE_INFO GEOM_AND_ATTR_BUILD_AGGREGATES";             }          else {}; ]
+FACTORY_DEF {*} ReferenceFactory    FACTORY_NAME { FeatureMerger }    FLUSH_WHEN_GROUPS_CHANGE { <Unused> }    INPUT REFERENCER FEATURE_TYPE AttributeRenamer_OUTPUT    INPUT REFERENCEE FEATURE_TYPE SQLCreator_2_RESULT    REFERENCE_INFO { $(FeatureMerger_REFERENCE_INFO) }    REFERENCE_TABLE { @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>name<closeparen>,FeatureMerger) @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>name<closeparen>,FeatureMerger) STRING }    ATTR_ACCUM_MODE { "HANDLE_CONFLICT" }    ATTR_CONFLICT_RES { "SUPPLIER_IF_CONFLICT" }    IGNORE_NULLS { "No" }    HANDLE_NULL_MISSING_KEYS_LIKE_FME2013 { No }    LIST_ATTRS_TO_INCLUDE { <Unused> }    LIST_ATTRS_TO_INCLUDE_MODE { <Unused> }    MERGE_ATTRIBUTES Yes    MANAGE_FME_TYPE Yes    MODE COMPLETE    PROCESS_DUPLICATE_REFERENCEES { NO }    REFERENCEES_FIRST { No }    REJECT_INVALID_GEOM YES    CLEANING_TOLERANCE { <Unused> }    PRESERVE_FEATURE_ORDER { PER_OUTPUT_PORT }    COMPARE_WHITESPACE Yes    OUTPUT { COMPLETE FEATURE_TYPE FeatureMerger_MERGED         }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME { AttributeCreator_TIMELIMIT_DAYS }    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE FeatureMerger_MERGED    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    ATTR_ACTION { "" "limitDAYS" "SET_TO" "10" }    OUTPUT { OUTPUT FEATURE_TYPE AttributeCreator_TIMELIMIT_DAYS_OUTPUT        }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} AttrSetFactory    FACTORY_NAME { AttributeCreator }    COMMAND_PARM_EVALUATION SINGLE_PASS    INPUT  FEATURE_TYPE AttributeCreator_TIMELIMIT_DAYS_OUTPUT    MULTI_FEATURE_MODE { NO }    NULL_ATTR_MODE { NO_OP }    ATTRSET_CREATE_DIRECTIVES _PROPAGATE_MISSING_FDIV    ATTR_ACTION { "" "timeNOW" "SET_TO" "<at>DateTimeNow<openparen><closeparen>" }      ATTR_ACTION { "" "age" "SET_TO" "<at>Evaluate<openparen><at>Value<openparen>timeNOW<closeparen>-<space><at>Value<openparen>last_write<closeparen><closeparen>" }      ATTR_ACTION { "" "limitSeconds" "SET_TO" "<at>Evaluate<openparen><at>Value<openparen>limitDAYS<closeparen>*24*60*60<closeparen>" }    OUTPUT { OUTPUT FEATURE_TYPE AttributeCreator_OUTPUT        }
+# -------------------------------------------------------------------------
+FACTORY_DEF {*} TeeFactory    FACTORY_NAME { TestFilter }    INPUT  FEATURE_TYPE AttributeCreator_OUTPUT    OUTPUT FEATURE_TYPE TestFilter_TESTFILTERINPUTLINE_0
+FACTORY_DEF {*} TestFactory FACTORY_NAME TestFilter_Condition_1 INPUT FEATURE_TYPE TestFilter_TESTFILTERINPUTLINE_0 TEST { age ATTRIBUTE_HAS_A_VALUE "" ENCODED } TEST { @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>age<closeparen>,TestFilter) <= @EvaluateExpression(FDIV,STRING_ENCODED,<at>Value<openparen>limitSeconds<closeparen>,TestFilter) ENCODED } BOOLEAN_OPERATOR AND COMPOSITE_TEST_EXPR "1 AND 2" FEATURE_TABLE_SHIM_SUPPORT Yes PRESERVE_FEATURE_ORDER PER_OUTPUT_PORT OUTPUT PASSED FEATURE_TYPE TestFilter_Project<space>to<space>keep OUTPUT FAILED FEATURE_TYPE TestFilter_TESTFILTERINPUTLINE_1
+FACTORY_DEF * TeeFactory FACTORY_NAME TestFilter_Projects<space>to<space>delete INPUT FEATURE_TYPE TestFilter_TESTFILTERINPUTLINE_1 OUTPUT FEATURE_TYPE TestFilter_Projects<space>to<space>delete
+FACTORY_DEF * TeeFactory   FACTORY_NAME "TestFilter Project<space>to<space>keep Transformer Output Nuker"   INPUT FEATURE_TYPE TestFilter_Project<space>to<space>keep
+# -------------------------------------------------------------------------
+FACTORY_DEF * TeeFactory   FACTORY_NAME "SQLExecutor (Disabled) Nuker"   INPUT FEATURE_TYPE TestFilter_Projects<space>to<space>delete
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * RoutingFactory FACTORY_NAME "Destination Feature Type Routing Correlator"   COMMAND_PARM_EVALUATION SINGLE_PASS   INPUT FEATURE_TYPE *   FEATURE_TYPE_ATTRIBUTE __wb_out_feat_type__   OUTPUT ROUTED FEATURE_TYPE *    OUTPUT NOT_ROUTED FEATURE_TYPE __nuke_me__ @Tcl2("FME_StatMessage 818059 [FME_GetAttribute fme_template_feature_type] 818060 818061 fme_warn")
+# -------------------------------------------------------------------------
+
+FACTORY_DEF * TeeFactory   FACTORY_NAME "Final Output Nuker"   INPUT FEATURE_TYPE __nuke_me__
+
