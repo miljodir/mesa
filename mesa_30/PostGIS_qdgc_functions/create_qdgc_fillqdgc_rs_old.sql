@@ -4,8 +4,7 @@
 
 CREATE OR REPLACE FUNCTION public.qdgc_fillqdgc_rs(
 	area_name text,
-    qdgc_level_min integer,
-	qdgc_level_max integer,
+	qdgc_level integer,
 	purge integer,
 	project_schema text,
 	area_poly geometry)
@@ -31,7 +30,7 @@ EXECUTE format('SET search_path TO %I, public', project_schema);  -- only for th
 	end if;
 
    	/* Establishing counter which defindes the depth of the grid cell creation. Here from 1 (1/2 degree) to 5 (1/32 degree) */
-    for counter in qdgc_level_min..qdgc_level_max loop
+    for counter in 1..qdgc_level loop
 	
 
    		with grid as (
